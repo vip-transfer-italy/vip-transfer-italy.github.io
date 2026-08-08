@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://vip-transfer-italy.github.io/sitemap.xml
