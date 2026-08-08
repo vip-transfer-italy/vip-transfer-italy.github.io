@@ -67,6 +67,7 @@
       <p class="hero__eyebrow reveal" data-i18n="hero_eyebrow">Private Chauffeur Service</p>
       <h1 class="hero__title reveal" data-i18n="hero_title">Premium Private Transfers in Italy</h1>
       <p class="hero__slogan reveal" data-i18n="hero_slogan">Comfort. Punctuality. Style.</p>
+      <p class="hero__badge reveal"><span>★</span> <em data-i18n="hero_badge">Best Price in Europe</em> <span>★</span></p>
       <div class="hero__actions reveal">
         <a href="#booking" class="btn btn--gold" data-i18n="hero_cta">Book Now</a>
         <a href="#fleet" class="btn btn--ghost" data-i18n="hero_cta2">Our Fleet</a>
@@ -155,6 +156,44 @@
             <a href="#booking" class="btn btn--outline" data-i18n="car_book">Book This Car</a>
           </div>
         </article>
+
+        <article class="car-card reveal">
+          <div class="car-card__media">
+            <img src="images/vw-touareg-cut.png" alt="Volkswagen Touareg" loading="lazy">
+          </div>
+          <div class="car-card__body">
+            <span class="car-card__badge" data-i18n="car3_badge">Premium SUV</span>
+            <h3 class="car-card__name">Volkswagen Touareg</h3>
+            <p class="car-card__desc" data-i18n="car3_desc">
+              A commanding premium SUV for those who value presence and power.
+              Confident on mountain roads, refined in the city.
+            </p>
+            <ul class="car-card__specs">
+              <li><span class="spec__num">4</span> <span data-i18n="car_pax">passengers</span></li>
+              <li><span class="spec__num">4</span> <span data-i18n="car_bags">suitcases</span></li>
+            </ul>
+            <a href="#booking" class="btn btn--outline" data-i18n="car_book">Book This Car</a>
+          </div>
+        </article>
+
+        <article class="car-card reveal">
+          <div class="car-card__media">
+            <img src="images/vw-caravelle-cut.png" alt="Volkswagen Caravelle" loading="lazy">
+          </div>
+          <div class="car-card__body">
+            <span class="car-card__badge" data-i18n="car4_badge">Group Van</span>
+            <h3 class="car-card__name">Volkswagen Caravelle</h3>
+            <p class="car-card__desc" data-i18n="car4_desc">
+              Space for the whole company. Eight comfortable seats and room
+              for everyone's luggage — ideal for groups and big families.
+            </p>
+            <ul class="car-card__specs">
+              <li><span class="spec__num">8</span> <span data-i18n="car_pax">passengers</span></li>
+              <li><span class="spec__num">10</span> <span data-i18n="car_bags">suitcases</span></li>
+            </ul>
+            <a href="#booking" class="btn btn--outline" data-i18n="car_book">Book This Car</a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -173,14 +212,16 @@
 
           <div class="form__field form__field--wide autocomplete">
             <label for="pickup" data-i18n="f_pickup">Pickup location</label>
-            <input type="text" id="pickup" name="pickup" autocomplete="off" required
+            <input type="text" id="pickup" name="pickup" autocomplete="off" autocapitalize="off"
+                   autocorrect="off" spellcheck="false" required
                    data-i18n-placeholder="f_addr_ph" placeholder="Address, airport, hotel...">
             <ul class="autocomplete__list" id="pickupList" role="listbox"></ul>
           </div>
 
           <div class="form__field form__field--wide autocomplete">
             <label for="destination" data-i18n="f_dest">Destination</label>
-            <input type="text" id="destination" name="destination" autocomplete="off" required
+            <input type="text" id="destination" name="destination" autocomplete="off" autocapitalize="off"
+                   autocorrect="off" spellcheck="false" required
                    data-i18n-placeholder="f_addr_ph" placeholder="Address, airport, hotel...">
             <ul class="autocomplete__list" id="destinationList" role="listbox"></ul>
           </div>

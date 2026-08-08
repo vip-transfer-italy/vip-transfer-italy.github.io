@@ -42,6 +42,7 @@ const I18N = {
     hero_eyebrow: 'Private Chauffeur Service',
     hero_title: 'Premium Private Transfers in Italy',
     hero_slogan: 'Comfort. Punctuality. Style.',
+    hero_badge: 'Best Price in Europe',
     hero_cta: 'Book Now',
     hero_cta2: 'Our Fleet',
 
@@ -63,6 +64,10 @@ const I18N = {
     car1_desc: 'The flagship of our fleet. First-class space for families and groups — leather interior, climate zones and room for everyone’s luggage.',
     car2_badge: 'Comfort Sedan',
     car2_desc: 'An elegant business sedan for solo travellers and couples. Smooth, quiet and refined — perfect for airport transfers.',
+    car3_badge: 'Premium SUV',
+    car3_desc: 'A commanding premium SUV for those who value presence and power. Confident on mountain roads, refined in the city.',
+    car4_badge: 'Group Van',
+    car4_desc: 'Space for the whole company. Eight comfortable seats and room for everyone’s luggage — ideal for groups and big families.',
     car_pax: 'passengers',
     car_bags: 'suitcases',
     car_book: 'Book This Car',
@@ -98,6 +103,7 @@ const I18N = {
     hero_eyebrow: 'Частный трансферный сервис',
     hero_title: 'Премиальные частные трансферы по Италии',
     hero_slogan: 'Комфорт. Пунктуальность. Стиль.',
+    hero_badge: 'Лучшая цена в Европе',
     hero_cta: 'Забронировать',
     hero_cta2: 'Наш автопарк',
 
@@ -119,6 +125,10 @@ const I18N = {
     car1_desc: 'Флагман нашего автопарка. Первоклассный простор для семей и групп — кожаный салон, климат-зоны и место для багажа каждого.',
     car2_badge: 'Комфорт-седан',
     car2_desc: 'Элегантный бизнес-седан для одиночных путешественников и пар. Плавный, тихий и утончённый — идеален для трансферов из аэропорта.',
+    car3_badge: 'Премиум-внедорожник',
+    car3_desc: 'Статусный премиальный внедорожник для тех, кто ценит присутствие и мощь. Уверен на горных дорогах, утончён в городе.',
+    car4_badge: 'Микроавтобус',
+    car4_desc: 'Простор для всей компании. Восемь комфортных мест и место для багажа каждого — идеален для групп и больших семей.',
     car_pax: 'пассажиров',
     car_bags: 'чемоданов',
     car_book: 'Забронировать это авто',
@@ -282,12 +292,15 @@ function setupAutocomplete(inputId, listId) {
         icon.textContent = '📍';
         li.appendChild(icon);
         li.appendChild(document.createTextNode(place.display_name));
-        // mousedown, а не click — щоб спрацювало до blur інпута
-        li.addEventListener('mousedown', (e) => {
+        // pointerdown спрацьовує і для миші, і для тапів на телефоні,
+        // ДО blur інпута (mousedown на iOS іноді губиться)
+        const pick = (e) => {
           e.preventDefault();
           input.value = place.display_name;
           closeList();
-        });
+        };
+        li.addEventListener('pointerdown', pick);
+        li.addEventListener('touchstart', pick, { passive: false });
         list.appendChild(li);
       });
       list.classList.add('is-open');
@@ -308,8 +321,9 @@ function setupAutocomplete(inputId, listId) {
   });
 
   input.addEventListener('blur', () => {
-    // невелика затримка, щоб mousedown по пункту встиг спрацювати
-    setTimeout(closeList, 150);
+    // затримка, щоб тап/клік по пункту встиг спрацювати (на мобільних
+    // події приходять пізніше, тому запас більший)
+    setTimeout(closeList, 300);
   });
 
   input.addEventListener('keydown', (e) => {

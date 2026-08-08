@@ -374,6 +374,30 @@ ul { list-style: none; }
   margin-bottom: 44px;
 }
 
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: -18px auto 40px;
+  padding: 10px 26px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: rgba(201, 162, 75, 0.08);
+  backdrop-filter: blur(4px);
+}
+.hero__badge span {
+  color: var(--gold);
+  font-size: 0.75rem;
+}
+.hero__badge em {
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
