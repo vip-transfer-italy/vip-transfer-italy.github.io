@@ -85,6 +85,9 @@ const I18N = {
     f_phone: 'Contact phone',
     f_phone_ph: '+39 ...',
     f_submit: 'Book Now',
+    f_or: 'or',
+    f_whatsapp: 'Book via WhatsApp',
+    f_wa_msg: 'Hello! I would like to book a transfer.',
     f_success: 'Thank you! We will contact you shortly.',
     f_error: 'Please fill in all required fields correctly.',
 
@@ -146,6 +149,9 @@ const I18N = {
     f_phone: 'Контактный телефон',
     f_phone_ph: '+39 ...',
     f_submit: 'Забронировать',
+    f_or: 'или',
+    f_whatsapp: 'Забронировать в WhatsApp',
+    f_wa_msg: 'Здравствуйте! Хочу забронировать трансфер.',
     f_success: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
     f_error: 'Пожалуйста, заполните все обязательные поля корректно.',
 
@@ -502,6 +508,22 @@ form.addEventListener('submit', async (e) => {
   submitBtn.style.display = 'none';
   formSuccess.hidden = false;
   formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+/* ============================================================
+   КНОПКА "ЗАБРОНЮВАТИ В WHATSAPP"
+   Підставляє в повідомлення все, що клієнт уже заповнив у формі
+   ============================================================ */
+document.getElementById('waBookBtn').addEventListener('click', function () {
+  const d = collectData();
+  const t = I18N[currentLang];
+  const lines = [t.f_wa_msg];
+  if (d.pickup)      lines.push('📍 ' + t.f_pickup + ': ' + d.pickup);
+  if (d.destination) lines.push('🏁 ' + t.f_dest + ': ' + d.destination);
+  if (d.date)        lines.push('📅 ' + d.date + (d.time ? ' 🕒 ' + d.time : ''));
+  if (d.passengers)  lines.push('👥 ' + t.f_pax + ': ' + d.passengers);
+  if (d.luggage && d.luggage !== '0') lines.push('🧳 ' + t.f_bags + ': ' + d.luggage);
+  this.href = 'https://wa.me/393513975476?text=' + encodeURIComponent(lines.join('\n'));
 });
 
 /* ============================================================

@@ -771,6 +771,40 @@ ul { list-style: none; }
   transform: none;
 }
 
+.form__or {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 18px 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.form__or::before,
+.form__or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn--wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(135deg, #1f8f14, #40b855);
+  color: #fff;
+  border: none;
+  box-shadow: 0 8px 30px rgba(64, 184, 85, 0.22);
+}
+.btn--wa:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(64, 184, 85, 0.4);
+}
+
 .form__error {
   margin-top: 18px;
   color: #e08a7a;
