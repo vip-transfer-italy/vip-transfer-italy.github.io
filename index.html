@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Transfer Italy — Premium Private Transfers</title>
+  <meta name="description" content="Premium private transfers in Italy. Mercedes V-Class & Toyota Camry. Airport transfers, city-to-city rides, English-speaking drivers, fixed prices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚘</text></svg>">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="header__inner container">
+      <a href="#hero" class="logo" aria-label="VIP Transfer Italy">
+        <span class="logo__mark">V</span>
+        <span class="logo__text">VIP TRANSFER <em>ITALY</em></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#fleet" data-i18n="nav_fleet">Fleet</a>
+        <a href="#booking" data-i18n="nav_booking">Booking</a>
+        <a href="#contacts" data-i18n="nav_contacts">Contacts</a>
+      </nav>
+
+      <div class="header__right">
+        <a href="tel:+393513975476" class="header__phone">+39 351 397 5476</a>
+
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-switch__btn is-active" data-lang="en" type="button">🇬🇧 EN</button>
+          <button class="lang-switch__btn" data-lang="ru" type="button">🇷🇺 RU</button>
+        </div>
+
+        <button class="burger" id="burger" type="button" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== FLOATING MESSENGER BUTTONS ===== -->
+  <div class="fab">
+    <a href="https://wa.me/393513975476" target="_blank" rel="noopener" class="fab__btn fab__btn--wa" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+    <a href="https://t.me/Transferitali" target="_blank" rel="noopener" class="fab__btn fab__btn--tg" aria-label="Telegram">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    </a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" role="img" aria-label="Black Mercedes V-Class at Lake Como, Italy"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <p class="hero__eyebrow reveal" data-i18n="hero_eyebrow">Private Chauffeur Service</p>
+      <h1 class="hero__title reveal" data-i18n="hero_title">Premium Private Transfers in Italy</h1>
+      <p class="hero__slogan reveal" data-i18n="hero_slogan">Comfort. Punctuality. Style.</p>
+      <div class="hero__actions reveal">
+        <a href="#booking" class="btn btn--gold" data-i18n="hero_cta">Book Now</a>
+        <a href="#fleet" class="btn btn--ghost" data-i18n="hero_cta2">Our Fleet</a>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="container">
+      <p class="section__eyebrow reveal" data-i18n="about_eyebrow">About Us</p>
+      <h2 class="section__title reveal" data-i18n="about_title">Travel Italy the First-Class Way</h2>
+      <p class="about__text reveal" data-i18n="about_text">
+        VIP Transfer Italy provides premium private transfers across the whole country —
+        airports, hotels, lakes, ski resorts and city-to-city rides. One car, one driver,
+        one fixed price. No queues, no stress, no surprises.
+      </p>
+
+      <div class="features">
+        <div class="feature reveal">
+          <div class="feature__icon">◆</div>
+          <h3 data-i18n="feat1_title">Always On Time</h3>
+          <p data-i18n="feat1_text">Flight tracking and free waiting time. We are there before you land.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature__icon">◆</div>
+          <h3 data-i18n="feat2_title">Fixed Price</h3>
+          <p data-i18n="feat2_text">The price you confirm is the price you pay. No hidden fees, no meters.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature__icon">◆</div>
+          <h3 data-i18n="feat3_title">English-Speaking Drivers</h3>
+          <p data-i18n="feat3_text">Professional, discreet chauffeurs who speak your language.</p>
+        </div>
+        <div class="feature reveal">
+          <div class="feature__icon">◆</div>
+          <h3 data-i18n="feat4_title">Premium Comfort</h3>
+          <p data-i18n="feat4_text">Spotless business-class vehicles, water on board, child seats on request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FLEET ===== -->
+  <section class="section fleet" id="fleet">
+    <div class="container">
+      <p class="section__eyebrow reveal" data-i18n="fleet_eyebrow">Our Fleet</p>
+      <h2 class="section__title reveal" data-i18n="fleet_title">Choose Your Class</h2>
+
+      <div class="fleet__grid">
+        <article class="car-card reveal">
+          <div class="car-card__media">
+            <img src="images/mercedes-v-class.jpg" alt="Mercedes-Benz V-Class" loading="lazy">
+          </div>
+          <div class="car-card__body">
+            <span class="car-card__badge" data-i18n="car1_badge">Business Van</span>
+            <h3 class="car-card__name">Mercedes-Benz V-Class</h3>
+            <p class="car-card__desc" data-i18n="car1_desc">
+              The flagship of our fleet. First-class space for families and groups —
+              leather interior, climate zones and room for everyone's luggage.
+            </p>
+            <ul class="car-card__specs">
+              <li><span class="spec__num">7</span> <span data-i18n="car_pax">passengers</span></li>
+              <li><span class="spec__num">7</span> <span data-i18n="car_bags">suitcases</span></li>
+            </ul>
+            <a href="#booking" class="btn btn--outline" data-i18n="car_book">Book This Car</a>
+          </div>
+        </article>
+
+        <article class="car-card reveal">
+          <div class="car-card__media">
+            <img src="images/toyota-camry.jpg" alt="Toyota Camry" loading="lazy">
+          </div>
+          <div class="car-card__body">
+            <span class="car-card__badge" data-i18n="car2_badge">Comfort Sedan</span>
+            <h3 class="car-card__name">Toyota Camry</h3>
+            <p class="car-card__desc" data-i18n="car2_desc">
+              An elegant business sedan for solo travellers and couples.
+              Smooth, quiet and refined — perfect for airport transfers.
+            </p>
+            <ul class="car-card__specs">
+              <li><span class="spec__num">3</span> <span data-i18n="car_pax">passengers</span></li>
+              <li><span class="spec__num">3</span> <span data-i18n="car_bags">suitcases</span></li>
+            </ul>
+            <a href="#booking" class="btn btn--outline" data-i18n="car_book">Book This Car</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING ===== -->
+  <section class="section booking" id="booking">
+    <div class="container">
+      <p class="section__eyebrow reveal" data-i18n="booking_eyebrow">Reservation</p>
+      <h2 class="section__title reveal" data-i18n="booking_title">Book Your Transfer</h2>
+      <p class="booking__note reveal" data-i18n="booking_note">
+        Fill in the form — we will confirm your ride and the exact price shortly.
+      </p>
+
+      <form class="form reveal" id="bookingForm" novalidate>
+        <div class="form__grid">
+
+          <div class="form__field form__field--wide autocomplete">
+            <label for="pickup" data-i18n="f_pickup">Pickup location</label>
+            <input type="text" id="pickup" name="pickup" autocomplete="off" required
+                   data-i18n-placeholder="f_addr_ph" placeholder="Address, airport, hotel...">
+            <ul class="autocomplete__list" id="pickupList" role="listbox"></ul>
+          </div>
+
+          <div class="form__field form__field--wide autocomplete">
+            <label for="destination" data-i18n="f_dest">Destination</label>
+            <input type="text" id="destination" name="destination" autocomplete="off" required
+                   data-i18n-placeholder="f_addr_ph" placeholder="Address, airport, hotel...">
+            <ul class="autocomplete__list" id="destinationList" role="listbox"></ul>
+          </div>
+
+          <div class="form__field">
+            <label for="date" data-i18n="f_date">Date</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+
+          <div class="form__field">
+            <label for="time" data-i18n="f_time">Time</label>
+            <input type="time" id="time" name="time" required>
+          </div>
+
+          <div class="form__field">
+            <label for="passengers" data-i18n="f_pax">Passengers</label>
+            <select id="passengers" name="passengers" required>
+              <option value="1">1</option><option value="2">2</option>
+              <option value="3">3</option><option value="4">4</option>
+              <option value="5">5</option><option value="6">6</option>
+              <option value="7">7</option><option value="8">8</option>
+            </select>
+          </div>
+
+          <div class="form__field">
+            <label for="luggage" data-i18n="f_bags">Luggage</label>
+            <select id="luggage" name="luggage" required>
+              <option value="0">0</option><option value="1">1</option>
+              <option value="2">2</option><option value="3">3</option>
+              <option value="4">4</option><option value="5">5</option>
+              <option value="6">6</option><option value="7">7</option>
+              <option value="8">8</option><option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+
+          <div class="form__field form__field--wide">
+            <label for="phone" data-i18n="f_phone">Contact phone</label>
+            <input type="tel" id="phone" name="phone" required
+                   data-i18n-placeholder="f_phone_ph" placeholder="+39 ..." inputmode="tel">
+          </div>
+        </div>
+
+        <p class="form__error" id="formError" hidden data-i18n="f_error">
+          Please fill in all required fields correctly.
+        </p>
+
+        <button type="submit" class="btn btn--gold form__submit" id="submitBtn" data-i18n="f_submit">
+          Book Now
+        </button>
+
+        <div class="form__success" id="formSuccess" hidden>
+          <div class="form__success-icon">✓</div>
+          <p data-i18n="f_success">Thank you! We will contact you shortly.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER / CONTACTS ===== -->
+  <footer class="footer" id="contacts">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#hero" class="logo">
+            <span class="logo__mark">V</span>
+            <span class="logo__text">VIP TRANSFER <em>ITALY</em></span>
+          </a>
+          <p data-i18n="footer_tag">Premium private transfers across Italy.</p>
+        </div>
+
+        <div class="footer__contacts">
+          <h4 data-i18n="footer_contacts">Contacts</h4>
+          <a href="tel:+393513975476" class="footer__link">📞 +39 351 397 5476</a>
+          <a href="https://wa.me/393513975476" target="_blank" rel="noopener" class="footer__link">WhatsApp</a>
+          <a href="https://t.me/Transferitali" target="_blank" rel="noopener" class="footer__link">Telegram</a>
+        </div>
+
+        <div class="footer__nav">
+          <h4 data-i18n="footer_menu">Menu</h4>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#fleet" data-i18n="nav_fleet">Fleet</a>
+          <a href="#booking" data-i18n="nav_booking">Booking</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span id="year"></span> VIP Transfer Italy. <span data-i18n="footer_rights">All rights reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
