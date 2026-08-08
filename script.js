@@ -260,31 +260,68 @@ function setupAutocomplete(inputId, listId) {
     list.innerHTML = '';
   };
 
+  // Два незалежні джерела підказок, запитуються ПАРАЛЕЛЬНО:
+  // 1) Nominatim — добре розуміє кирилицю, але жорстко ріже запити
+  //    за IP (мобільні оператори часто заблоковані)
+  // 2) Photon (komoot) — лояльний до мобільних IP, чудовий для латиниці
+  // Використовуємо перший непорожній результат (пріоритет — Nominatim).
+  async function fetchNominatim(query, signal) {
+    const url = 'https://nominatim.openstreetmap.org/search'
+      + '?q=' + encodeURIComponent(query)
+      + '&format=json&countrycodes=it&limit=5&addressdetails=0'
+      + '&accept-language=' + (currentLang === 'ru' ? 'ru' : 'en');
+    const res = await fetch(url, { signal, headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error('Nominatim HTTP ' + res.status);
+    const data = await res.json();
+    return (Array.isArray(data) ? data : []).map(p => p.display_name).filter(Boolean);
+  }
+
+  async function fetchPhoton(query, signal) {
+    // bbox ≈ Італія; Photon не приймає lang=ru, тому завжди en
+    const url = 'https://photon.komoot.io/api/'
+      + '?q=' + encodeURIComponent(query)
+      + '&limit=5&lang=en&bbox=6.6,35.4,18.6,47.2';
+    const res = await fetch(url, { signal });
+    if (!res.ok) throw new Error('Photon HTTP ' + res.status);
+    const data = await res.json();
+    return (data.features || []).map(f => {
+      const p = f.properties || {};
+      return [p.name, p.street, p.housenumber, p.city, p.state, p.country]
+        .filter(Boolean).join(', ');
+    }).filter(Boolean);
+  }
+
   const search = debounce(async (query) => {
     if (abortCtrl) abortCtrl.abort();
     abortCtrl = new AbortController();
+    const signal = abortCtrl.signal;
 
     try {
-      const url = 'https://nominatim.openstreetmap.org/search'
-        + '?q=' + encodeURIComponent(query)
-        + '&format=json&countrycodes=it&limit=5&addressdetails=0'
-        + '&accept-language=' + (currentLang === 'ru' ? 'ru' : 'en');
+      const results = await Promise.allSettled([
+        fetchNominatim(query, signal),
+        fetchPhoton(query, signal)
+      ]);
+      if (signal.aborted) return;
 
-      const res = await fetch(url, {
-        signal: abortCtrl.signal,
-        headers: { 'Accept': 'application/json' }
+      const nomi = results[0].status === 'fulfilled' ? results[0].value : [];
+      const photon = results[1].status === 'fulfilled' ? results[1].value : [];
+      // об'єднуємо: спочатку Nominatim, потім унікальні з Photon
+      const seen = new Set();
+      const items = [];
+      [...nomi, ...photon].forEach(name => {
+        const key = name.toLowerCase().slice(0, 60);
+        if (!seen.has(key) && items.length < 5) { seen.add(key); items.push(name); }
       });
-      if (!res.ok) throw new Error('Nominatim HTTP ' + res.status);
 
-      const data = await res.json();
       list.innerHTML = '';
 
-      if (!Array.isArray(data) || data.length === 0) {
+      if (items.length === 0) {
         closeList();
         return;
       }
 
-      data.forEach(place => {
+      items.forEach(display_name => {
+        const place = { display_name };
         const li = document.createElement('li');
         li.setAttribute('role', 'option');
         const icon = document.createElement('span');
