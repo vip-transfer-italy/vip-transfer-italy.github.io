@@ -43,7 +43,7 @@ const I18N = {
     hero_title: 'Premium Private Transfers in Italy',
     hero_slogan: 'Comfort. Punctuality. Style.',
     hero_badge: 'Best Price in Europe',
-    hero_cta: 'Book Now',
+    hero_cta: 'Get a Price',
     hero_cta2: 'Our Fleet',
 
     about_eyebrow: 'About Us',
@@ -84,17 +84,145 @@ const I18N = {
     f_bags: 'Luggage',
     f_phone: 'Contact phone',
     f_phone_ph: '+39 ...',
-    f_submit: 'Book Now',
+    f_submit: 'Get a Price',
     f_or: 'or',
     f_whatsapp: 'Book via WhatsApp',
     f_wa_msg: 'Hello! I would like to book a transfer.',
-    f_success: 'Thank you! We will contact you shortly.',
+    f_success: 'Thank you for your order! Our manager will contact you on WhatsApp shortly.',
     f_error: 'Please fill in all required fields correctly.',
 
     footer_tag: 'Premium private transfers across Italy.',
     footer_contacts: 'Contacts',
     footer_menu: 'Menu',
     footer_rights: 'All rights reserved.'
+  },
+
+  it: {
+    nav_about: 'Chi siamo',
+    nav_fleet: 'Flotta',
+    nav_booking: 'Prenotazione',
+    nav_contacts: 'Contatti',
+
+    hero_eyebrow: 'Servizio Autista Privato',
+    hero_title: 'Transfer Privati Premium in Italia',
+    hero_slogan: 'Comfort. Puntualità. Stile.',
+    hero_badge: 'Miglior Prezzo in Europa',
+    hero_cta: 'Scopri il Prezzo',
+    hero_cta2: 'La Nostra Flotta',
+
+    about_eyebrow: 'Chi Siamo',
+    about_title: 'Viaggia in Italia in Prima Classe',
+    about_text: 'VIP Transfer Italy offre transfer privati premium in tutto il paese — aeroporti, hotel, laghi, località sciistiche e viaggi tra città. Un\'auto, un autista, un prezzo fisso. Niente code, niente stress, niente sorprese.',
+    feat1_title: 'Sempre Puntuali',
+    feat1_text: 'Monitoriamo il tuo volo, attesa gratuita. Siamo lì prima del tuo atterraggio.',
+    feat2_title: 'Prezzo Fisso',
+    feat2_text: 'Il prezzo confermato è quello che paghi. Nessun costo nascosto, nessun tassametro.',
+    feat3_title: 'Autisti Multilingue',
+    feat3_text: 'Autisti professionali e discreti che parlano la tua lingua.',
+    feat4_title: 'Comfort Premium',
+    feat4_text: 'Auto business impeccabili, acqua a bordo, seggiolini per bambini su richiesta.',
+
+    fleet_eyebrow: 'La Nostra Flotta',
+    fleet_title: 'Scegli la Tua Classe',
+    car1_badge: 'Van Business',
+    car1_desc: 'L\'ammiraglia della nostra flotta. Spazio di prima classe per famiglie e gruppi — interni in pelle, zone climatiche e spazio per i bagagli di tutti.',
+    car2_badge: 'Berlina Comfort',
+    car2_desc: 'Un\'elegante berlina business per chi viaggia da solo o in coppia. Fluida, silenziosa e raffinata — perfetta per i transfer aeroportuali.',
+    car3_badge: 'SUV Premium',
+    car3_desc: 'Un SUV premium imponente per chi apprezza presenza e potenza. Sicuro sulle strade di montagna, raffinato in città.',
+    car4_badge: 'Van per Gruppi',
+    car4_desc: 'Spazio per tutta la compagnia. Otto comodi posti e spazio per i bagagli di tutti — ideale per gruppi e famiglie numerose.',
+    car_pax: 'passeggeri',
+    car_bags: 'valigie',
+    car_book: 'Prenota Questa Auto',
+
+    booking_eyebrow: 'Prenotazione',
+    booking_title: 'Prenota il Tuo Transfer',
+    booking_note: 'Compila il modulo — confermeremo il viaggio e il prezzo esatto a breve.',
+    f_pickup: 'Punto di partenza',
+    f_dest: 'Destinazione',
+    f_addr_ph: 'Indirizzo, aeroporto, hotel...',
+    f_date: 'Data',
+    f_time: 'Ora',
+    f_pax: 'Passeggeri',
+    f_bags: 'Bagagli',
+    f_phone: 'Telefono di contatto',
+    f_phone_ph: '+39 ...',
+    f_submit: 'Scopri il Prezzo',
+    f_or: 'oppure',
+    f_whatsapp: 'Prenota su WhatsApp',
+    f_wa_msg: 'Salve! Vorrei prenotare un transfer.',
+    f_success: 'Grazie per la richiesta! Un nostro manager ti contatterà su WhatsApp a breve.',
+    f_error: 'Compila correttamente tutti i campi obbligatori.',
+
+    footer_tag: 'Transfer privati premium in tutta Italia.',
+    footer_contacts: 'Contatti',
+    footer_menu: 'Menu',
+    footer_rights: 'Tutti i diritti riservati.'
+  },
+
+  es: {
+    nav_about: 'Nosotros',
+    nav_fleet: 'Flota',
+    nav_booking: 'Reserva',
+    nav_contacts: 'Contacto',
+
+    hero_eyebrow: 'Servicio de Chófer Privado',
+    hero_title: 'Traslados Privados Premium en Italia',
+    hero_slogan: 'Confort. Puntualidad. Estilo.',
+    hero_badge: 'Mejor Precio de Europa',
+    hero_cta: 'Consultar Precio',
+    hero_cta2: 'Nuestra Flota',
+
+    about_eyebrow: 'Nosotros',
+    about_title: 'Viaja por Italia en Primera Clase',
+    about_text: 'VIP Transfer Italy ofrece traslados privados premium por todo el país — aeropuertos, hoteles, lagos, estaciones de esquí y viajes entre ciudades. Un coche, un conductor, un precio fijo. Sin colas, sin estrés, sin sorpresas.',
+    feat1_title: 'Siempre Puntuales',
+    feat1_text: 'Seguimos tu vuelo, espera gratuita. Estamos allí antes de que aterrices.',
+    feat2_title: 'Precio Fijo',
+    feat2_text: 'El precio confirmado es el que pagas. Sin cargos ocultos, sin taxímetro.',
+    feat3_title: 'Conductores Multilingües',
+    feat3_text: 'Chóferes profesionales y discretos que hablan tu idioma.',
+    feat4_title: 'Confort Premium',
+    feat4_text: 'Vehículos business impecables, agua a bordo, sillas infantiles bajo petición.',
+
+    fleet_eyebrow: 'Nuestra Flota',
+    fleet_title: 'Elige Tu Clase',
+    car1_badge: 'Van Business',
+    car1_desc: 'El buque insignia de nuestra flota. Espacio de primera clase para familias y grupos — interior de cuero, zonas de clima y sitio para el equipaje de todos.',
+    car2_badge: 'Berlina Confort',
+    car2_desc: 'Una elegante berlina business para viajeros solos y parejas. Suave, silenciosa y refinada — perfecta para traslados al aeropuerto.',
+    car3_badge: 'SUV Premium',
+    car3_desc: 'Un imponente SUV premium para quienes valoran presencia y potencia. Seguro en carreteras de montaña, refinado en la ciudad.',
+    car4_badge: 'Van para Grupos',
+    car4_desc: 'Espacio para todo el grupo. Ocho cómodos asientos y sitio para el equipaje de todos — ideal para grupos y familias numerosas.',
+    car_pax: 'pasajeros',
+    car_bags: 'maletas',
+    car_book: 'Reservar Este Coche',
+
+    booking_eyebrow: 'Reserva',
+    booking_title: 'Reserva Tu Traslado',
+    booking_note: 'Rellena el formulario — confirmaremos el viaje y el precio exacto en breve.',
+    f_pickup: 'Punto de recogida',
+    f_dest: 'Destino',
+    f_addr_ph: 'Dirección, aeropuerto, hotel...',
+    f_date: 'Fecha',
+    f_time: 'Hora',
+    f_pax: 'Pasajeros',
+    f_bags: 'Equipaje',
+    f_phone: 'Teléfono de contacto',
+    f_phone_ph: '+39 ...',
+    f_submit: 'Consultar Precio',
+    f_or: 'o',
+    f_whatsapp: 'Reservar por WhatsApp',
+    f_wa_msg: '¡Hola! Quiero reservar un traslado.',
+    f_success: '¡Gracias por tu solicitud! Un gestor te contactará por WhatsApp en breve.',
+    f_error: 'Por favor, rellena correctamente todos los campos obligatorios.',
+
+    footer_tag: 'Traslados privados premium por toda Italia.',
+    footer_contacts: 'Contacto',
+    footer_menu: 'Menú',
+    footer_rights: 'Todos los derechos reservados.'
   },
 
   ru: {
@@ -107,7 +235,7 @@ const I18N = {
     hero_title: 'Премиальные частные трансферы по Италии',
     hero_slogan: 'Комфорт. Пунктуальность. Стиль.',
     hero_badge: 'Лучшая цена в Европе',
-    hero_cta: 'Забронировать',
+    hero_cta: 'Узнать цену',
     hero_cta2: 'Наш автопарк',
 
     about_eyebrow: 'О нас',
@@ -148,11 +276,11 @@ const I18N = {
     f_bags: 'Багаж',
     f_phone: 'Контактный телефон',
     f_phone_ph: '+39 ...',
-    f_submit: 'Забронировать',
+    f_submit: 'Узнать цену',
     f_or: 'или',
     f_whatsapp: 'Забронировать в WhatsApp',
     f_wa_msg: 'Здравствуйте! Хочу забронировать трансфер.',
-    f_success: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
+    f_success: 'Спасибо за заказ! С вами свяжется менеджер в WhatsApp.',
     f_error: 'Пожалуйста, заполните все обязательные поля корректно.',
 
     footer_tag: 'Премиальные частные трансферы по Италии.',
@@ -166,6 +294,17 @@ const I18N = {
    ЛОКАЛІЗАЦІЯ
    ============================================================ */
 let currentLang = 'en'; // мова за замовчуванням — англійська
+
+const LANG_META = {
+  en: '🇬🇧 EN',
+  it: '🇮🇹 IT',
+  es: '🇪🇸 ES',
+  ru: '🇷🇺 RU'
+};
+
+const langSwitch = document.getElementById('langSwitch');
+const langToggle = document.getElementById('langToggle');
+const langMenu = document.getElementById('langMenu');
 
 function applyLang(lang) {
   currentLang = lang;
@@ -183,15 +322,26 @@ function applyLang(lang) {
     if (dict[key] !== undefined) el.placeholder = dict[key];
   });
 
-  document.querySelectorAll('.lang-switch__btn').forEach(btn => {
+  langToggle.innerHTML = LANG_META[lang] + ' <i>▾</i>';
+  langMenu.querySelectorAll('button').forEach(btn => {
     btn.classList.toggle('is-active', btn.dataset.lang === lang);
   });
 
   try { localStorage.setItem('vti_lang', lang); } catch (e) { /* ignore */ }
 }
 
-document.querySelectorAll('.lang-switch__btn').forEach(btn => {
-  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+langToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  langSwitch.classList.toggle('is-open');
+});
+langMenu.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    applyLang(btn.dataset.lang);
+    langSwitch.classList.remove('is-open');
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!langSwitch.contains(e.target)) langSwitch.classList.remove('is-open');
 });
 
 // відновлюємо збережену мову (якщо була)
@@ -275,7 +425,7 @@ function setupAutocomplete(inputId, listId) {
     const url = 'https://nominatim.openstreetmap.org/search'
       + '?q=' + encodeURIComponent(query)
       + '&format=json&countrycodes=it&limit=5&addressdetails=0'
-      + '&accept-language=' + (currentLang === 'ru' ? 'ru' : 'en');
+      + '&accept-language=' + currentLang;
     const res = await fetch(url, { signal, headers: { 'Accept': 'application/json' } });
     if (!res.ok) throw new Error('Nominatim HTTP ' + res.status);
     const data = await res.json();

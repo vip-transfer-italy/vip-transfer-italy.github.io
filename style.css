@@ -196,27 +196,72 @@ ul { list-style: none; }
 .header__phone:hover { color: var(--gold); }
 
 .lang-switch {
+  position: relative;
+}
+.lang-switch__toggle {
   display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
   border: 1px solid var(--line);
   border-radius: 4px;
-  overflow: hidden;
+  color: var(--gold-light);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
 }
-.lang-switch__btn {
+.lang-switch__toggle i {
+  font-style: normal;
+  font-size: 0.65rem;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+.lang-switch.is-open .lang-switch__toggle i { transform: rotate(180deg); }
+.lang-switch__toggle:hover {
+  background: rgba(201, 162, 75, 0.1);
+  border-color: var(--gold);
+}
+.lang-switch__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 150px;
+  background: #1b1b21;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: none;
+  z-index: 120;
+}
+.lang-switch.is-open .lang-switch__menu { display: block; }
+.lang-switch__menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
   background: transparent;
   border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 7px 11px;
+  font-size: 0.88rem;
+  padding: 11px 16px;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.lang-switch__btn.is-active {
-  background: rgba(201, 162, 75, 0.15);
+.lang-switch__menu li:last-child button { border-bottom: none; }
+.lang-switch__menu button:hover {
+  background: rgba(201, 162, 75, 0.1);
+  color: var(--text);
+}
+.lang-switch__menu button.is-active {
   color: var(--gold-light);
+  background: rgba(201, 162, 75, 0.07);
 }
-.lang-switch__btn:hover:not(.is-active) { color: var(--text); }
 
 /* burger (mobile menu) */
 .burger {
