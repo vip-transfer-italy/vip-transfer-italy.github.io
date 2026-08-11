@@ -14,7 +14,13 @@
    (детальна інструкція — у README.md)
    ============================================================ */
 const TELEGRAM_BOT_TOKEN = '8942880584:AAEmhwvD4kaDen1cnkv1vB_V0jG2YhxWgwY';
-const TELEGRAM_CHAT_ID   = '8258127755';
+// Заявка приходить УСІМ, хто вказаний у списку.
+// Щоб додати ще одного отримувача: він відкриває бота, натискає Start,
+// а його chat_id береться з https://api.telegram.org/bot<ТОКЕН>/getUpdates
+const TELEGRAM_CHAT_IDS = [
+  '8258127755',  // @Transferitali (Іван)
+  '8952003342'   // @VipTransferIt (Ioano)
+];
 
 /* ------------------------------------------------------------
    ВАРІАНТ B (альтернатива, без бота): FormSubmit.co — заявки
@@ -751,15 +757,21 @@ async function sendToTelegram(d) {
     '🧳 Багаж: ' + d.luggage + '\n' +
     '📞 Телефон: ' + d.phone;
 
-  const res = await fetch(
-    'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage',
-    {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: text })
-    }
+  // шлемо всім отримувачам паралельно; якщо один чат недоступний
+  // (заблокував бота тощо) — інші все одно отримають заявку
+  const results = await Promise.allSettled(
+    TELEGRAM_CHAT_IDS.map(id => fetch(
+      'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: id, text: text })
+      }
+    ))
   );
-  if (!res.ok) throw new Error('Telegram API error ' + res.status);
+
+  const delivered = results.filter(r => r.status === 'fulfilled' && r.value.ok).length;
+  if (delivered === 0) throw new Error('Telegram: жоден отримувач не отримав заявку');
 }
 
 /* ---- ВАРІАНТ B: відправка на email через FormSubmit.co ---- */
@@ -804,7 +816,7 @@ form.addEventListener('submit', async (e) => {
     } else {
       // токен ще не налаштований — лише лог для розробника
       console.warn('[VIP Transfer] Заявка не відправлена власнику: ' +
-        'вкажи TELEGRAM_BOT_TOKEN і TELEGRAM_CHAT_ID вгорі script.js', data);
+        'вкажи TELEGRAM_BOT_TOKEN і TELEGRAM_CHAT_IDS вгорі script.js', data);
     }
   } catch (err) {
     // не блокуємо користувача, якщо сповіщення не пішло —

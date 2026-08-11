@@ -82,7 +82,10 @@ vip-transfer/
 
 ```js
 const TELEGRAM_BOT_TOKEN = '7123456789:AAHf3k...xyz';  // твій токен
-const TELEGRAM_CHAT_ID   = '123456789';                // твій chat id
+const TELEGRAM_CHAT_IDS = [
+  '123456789',   // твій chat id
+  '987654321'    // (необов'язково) ще один отримувач — заявка прийде обом
+];
 ```
 
 Готово — кожна заявка з форми прилітатиме тобі в Telegram.
