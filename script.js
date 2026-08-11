@@ -91,6 +91,13 @@ const I18N = {
     f_success: 'Thank you for your order! Our manager will contact you on WhatsApp shortly.',
     f_error: 'Please fill in all required fields correctly.',
 
+    stats_eyebrow: 'Why Us',
+    stats_title: 'Numbers speak louder than words',
+    stats1: 'Years of experience',
+    stats2: 'Transfers completed',
+    stats3: 'Happy clients',
+    stats4: 'Support on WhatsApp',
+
     nav_reviews: 'Reviews',
     reviews_eyebrow: 'Reviews',
     reviews_title: 'What Our Clients Say',
@@ -161,6 +168,13 @@ const I18N = {
     f_wa_msg: 'Salve! Vorrei prenotare un transfer.',
     f_success: 'Grazie per la richiesta! Un nostro manager ti contatterà su WhatsApp a breve.',
     f_error: 'Compila correttamente tutti i campi obbligatori.',
+
+    stats_eyebrow: 'Perché Noi',
+    stats_title: 'I numeri parlano più delle parole',
+    stats1: 'Anni di esperienza',
+    stats2: 'Transfer completati',
+    stats3: 'Clienti soddisfatti',
+    stats4: 'Assistenza su WhatsApp',
 
     nav_reviews: 'Recensioni',
     reviews_eyebrow: 'Recensioni',
@@ -233,6 +247,13 @@ const I18N = {
     f_success: '¡Gracias por tu solicitud! Un gestor te contactará por WhatsApp en breve.',
     f_error: 'Por favor, rellena correctamente todos los campos obligatorios.',
 
+    stats_eyebrow: 'Por Qué Nosotros',
+    stats_title: 'Los números hablan más que las palabras',
+    stats1: 'Años de experiencia',
+    stats2: 'Traslados realizados',
+    stats3: 'Clientes satisfechos',
+    stats4: 'Asistencia por WhatsApp',
+
     nav_reviews: 'Reseñas',
     reviews_eyebrow: 'Reseñas',
     reviews_title: 'Lo Que Dicen Nuestros Clientes',
@@ -303,6 +324,13 @@ const I18N = {
     f_wa_msg: 'Здравствуйте! Хочу забронировать трансфер.',
     f_success: 'Спасибо за заказ! С вами свяжется менеджер в WhatsApp.',
     f_error: 'Пожалуйста, заполните все обязательные поля корректно.',
+
+    stats_eyebrow: 'Почему мы',
+    stats_title: 'Цифры говорят громче слов',
+    stats1: 'Лет опыта',
+    stats2: 'Выполненных трансферов',
+    stats3: 'Довольных клиентов',
+    stats4: 'Поддержка в WhatsApp',
 
     nav_reviews: 'Отзывы',
     reviews_eyebrow: 'Отзывы',
@@ -412,7 +440,82 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+let revealsStarted = false;
+function startReveals() {
+  if (revealsStarted) return;
+  revealsStarted = true;
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* ============================================================
+   ІНТРО-ЛОАДЕР: лічильник 000→100, потім екран їде вгору.
+   Показується раз за сесію; анімації сайту стартують після нього.
+   ============================================================ */
+(function () {
+  const loader = document.getElementById('loader');
+  const fill = document.getElementById('loaderFill');
+  const num = document.getElementById('loaderNum');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let seen = false;
+  try { seen = !!sessionStorage.getItem('vti_intro'); } catch (e) { /* ignore */ }
+
+  if (!loader || reduced || seen) {
+    if (loader) loader.remove();
+    startReveals();
+    return;
+  }
+
+  document.documentElement.style.overflow = 'hidden';
+  window.scrollTo(0, 0); // інтро завжди починається з верху сторінки
+  const FILL_MS = 1300;
+  const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  let t0 = null;
+
+  function frame(ts) {
+    if (t0 === null) t0 = ts;
+    const p = Math.min((ts - t0) / FILL_MS, 1);
+    const v = Math.round(ease(p) * 100);
+    fill.style.width = v + '%';
+    num.textContent = String(v).padStart(3, '0');
+    if (p < 1) {
+      requestAnimationFrame(frame);
+    } else {
+      loader.classList.add('done');
+      try { sessionStorage.setItem('vti_intro', '1'); } catch (e) { /* ignore */ }
+      setTimeout(() => {
+        document.documentElement.style.overflow = '';
+        startReveals();
+        setTimeout(() => loader.remove(), 400);
+      }, 550);
+    }
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ============================================================
+   СТАТИСТИКА: цифри набігають, коли панель з'являється на екрані
+   ============================================================ */
+const statsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    statsObserver.unobserve(entry.target);
+    const el = entry.target;
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const DUR = 1500;
+    let start = null;
+    const step = (ts) => {
+      if (start === null) start = ts;
+      const p = Math.min((ts - start) / DUR, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stats__num').forEach(el => statsObserver.observe(el));
 
 /* ============================================================
    АВТОПІДКАЗКИ АДРЕС — Nominatim (OpenStreetMap)

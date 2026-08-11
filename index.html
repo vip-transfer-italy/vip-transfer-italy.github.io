@@ -19,6 +19,22 @@
 </head>
 <body>
 
+  <!-- ===== INTRO LOADER ===== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__center">
+      <div class="loader__brand">
+        <span class="logo__mark loader__mark">V</span>
+        <span class="loader__name">VIP TRANSFER <em>ITALY</em></span>
+      </div>
+      <p class="loader__tag">Comfort · Punctuality · Style</p>
+    </div>
+    <div class="loader__progress">
+      <div class="loader__track"><div class="loader__fill" id="loaderFill"></div></div>
+      <div class="loader__row"><span>Loading</span><span id="loaderNum">000</span></div>
+    </div>
+  </div>
+  <noscript><style>.loader{display:none}.reveal{opacity:1!important;transform:none!important}</style></noscript>
+
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
     <div class="header__inner container">
@@ -289,6 +305,34 @@
             <a href="#booking" class="btn btn--outline" data-i18n="car_book">Book This Car</a>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="section stats-section">
+    <div class="container">
+      <div class="stats reveal">
+        <p class="section__eyebrow" data-i18n="stats_eyebrow">Why Us</p>
+        <h2 class="section__title" data-i18n="stats_title">Numbers speak louder than words</h2>
+        <ul class="stats__grid">
+          <li>
+            <span class="stats__num" data-count="10" data-suffix="+">10+</span>
+            <p data-i18n="stats1">Years of experience</p>
+          </li>
+          <li>
+            <span class="stats__num" data-count="5000" data-suffix="+">5000+</span>
+            <p data-i18n="stats2">Transfers completed</p>
+          </li>
+          <li>
+            <span class="stats__num" data-count="98" data-suffix="%">98%</span>
+            <p data-i18n="stats3">Happy clients</p>
+          </li>
+          <li>
+            <span class="stats__num" data-count="24" data-suffix="/7">24/7</span>
+            <p data-i18n="stats4">Support on WhatsApp</p>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
