@@ -18,7 +18,6 @@ const TELEGRAM_BOT_TOKEN = '8942880584:AAEmhwvD4kaDen1cnkv1vB_V0jG2YhxWgwY';
 // Щоб додати ще одного отримувача: він відкриває бота, натискає Start,
 // а його chat_id береться з https://api.telegram.org/bot<ТОКЕН>/getUpdates
 const TELEGRAM_CHAT_IDS = [
-  '8258127755',  // @Transferitali (Іван)
   '8952003342'   // @VipTransferIt (Ioano)
 ];
 
