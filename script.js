@@ -13,8 +13,8 @@
       і скопіюй "chat":{"id": ЧИСЛО} → це CHAT_ID
    (детальна інструкція — у README.md)
    ============================================================ */
-const TELEGRAM_BOT_TOKEN = '8759888209:AAHWrMXnGG0fAoaI84lkCvDmEeG7hRq2DkA';
-const TELEGRAM_CHAT_ID   = '8558195511';
+const TELEGRAM_BOT_TOKEN = '8942880584:AAEmhwvD4kaDen1cnkv1vB_V0jG2YhxWgwY';
+const TELEGRAM_CHAT_ID   = '8258127755';
 
 /* ------------------------------------------------------------
    ВАРІАНТ B (альтернатива, без бота): FormSubmit.co — заявки
