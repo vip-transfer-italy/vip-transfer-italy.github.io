@@ -440,11 +440,38 @@ const revealObserver = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
+// Страхування: якщо IntersectionObserver недоступний або не спрацьовує
+// (деякі вбудовані браузери), перемикаємось на перевірку по скролу —
+// інакше блоки залишились би невидимими (opacity: 0).
+function revealInView() {
+  document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight - 40 && r.bottom > 0) el.classList.add('is-visible');
+  });
+}
+
+function useScrollFallback() {
+  revealInView();
+  window.addEventListener('scroll', revealInView, { passive: true });
+  window.addEventListener('resize', revealInView);
+}
+
 let revealsStarted = false;
 function startReveals() {
   if (revealsStarted) return;
   revealsStarted = true;
+
+  if (!('IntersectionObserver' in window)) {
+    useScrollFallback();
+    return;
+  }
+
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // якщо за 1.2 с жоден блок не з'явився — обсервер не працює
+  setTimeout(() => {
+    if (!document.querySelector('.reveal.is-visible')) useScrollFallback();
+  }, 1200);
 }
 
 /* ============================================================

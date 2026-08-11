@@ -1149,7 +1149,8 @@ ul { list-style: none; }
 
 /* hero: deeper cascade after the intro loader */
 .hero__eyebrow.reveal { transition-delay: 0.05s; }
-.hero__title.reveal   { transform: translateY(46px); transition-delay: 0.15s; transition-duration: 1s; }
+.hero__title.reveal   { transition-delay: 0.15s; transition-duration: 1s; }
+.hero__title.reveal:not(.is-visible) { transform: translateY(46px); }
 .hero__slogan.reveal  { transition-delay: 0.32s; }
 .hero__badge.reveal   { transition-delay: 0.44s; }
 .hero__actions.reveal { transition-delay: 0.56s; }
