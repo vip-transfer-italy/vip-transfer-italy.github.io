@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚘</text></svg>">
 </head>
 <body>
@@ -130,8 +130,34 @@
           </div>
 
           <div class="form__field">
-            <label for="time" data-i18n="f_time">Time</label>
-            <input type="time" id="time" name="time" required>
+            <label for="timeHour" data-i18n="f_time">Time</label>
+            <div class="time-row">
+              <select id="timeHour" name="timeHour" required aria-label="Hours">
+                <option value="" data-i18n="f_hh">Hour</option>
+                <option value="00">00</option><option value="01">01</option>
+                <option value="02">02</option><option value="03">03</option>
+                <option value="04">04</option><option value="05">05</option>
+                <option value="06">06</option><option value="07">07</option>
+                <option value="08">08</option><option value="09">09</option>
+                <option value="10">10</option><option value="11">11</option>
+                <option value="12">12</option><option value="13">13</option>
+                <option value="14">14</option><option value="15">15</option>
+                <option value="16">16</option><option value="17">17</option>
+                <option value="18">18</option><option value="19">19</option>
+                <option value="20">20</option><option value="21">21</option>
+                <option value="22">22</option><option value="23">23</option>
+              </select>
+              <span class="time-row__sep">:</span>
+              <select id="timeMinute" name="timeMinute" required aria-label="Minutes">
+                <option value="" data-i18n="f_mm">Min</option>
+                <option value="00">00</option><option value="05">05</option>
+                <option value="10">10</option><option value="15">15</option>
+                <option value="20">20</option><option value="25">25</option>
+                <option value="30">30</option><option value="35">35</option>
+                <option value="40">40</option><option value="45">45</option>
+                <option value="50">50</option><option value="55">55</option>
+              </select>
+            </div>
           </div>
 
           <div class="form__field">
@@ -445,6 +471,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

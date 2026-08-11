@@ -757,11 +757,30 @@ ul { list-style: none; }
   box-shadow: 0 0 0 3px rgba(184, 80, 63, 0.15);
 }
 
-/* date & time pickers — dark scheme */
-.form__field input[type="date"],
-.form__field input[type="time"] {
+/* date picker — dark scheme */
+.form__field input[type="date"] {
   color-scheme: dark;
   min-height: 50px;
+}
+
+/* час — два списки замість системного годинника
+   (на Android у вбудованих браузерах він часто обрізається) */
+.time-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.time-row select {
+  flex: 1;
+  min-height: 50px;
+  padding-right: 34px;
+  background-position: right 10px center;
+  text-align: center;
+}
+.time-row__sep {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 500;
 }
 
 /* ---- autocomplete dropdown ---- */

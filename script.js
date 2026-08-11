@@ -85,6 +85,8 @@ const I18N = {
     f_addr_ph: 'Address, airport, hotel...',
     f_date: 'Date',
     f_time: 'Time',
+    f_hh: 'Hour',
+    f_mm: 'Min',
     f_pax: 'Passengers',
     f_bags: 'Luggage',
     f_phone: 'Contact phone',
@@ -172,6 +174,8 @@ const I18N = {
     f_addr_ph: 'Indirizzo, aeroporto, hotel...',
     f_date: 'Data',
     f_time: 'Ora',
+    f_hh: 'Ora',
+    f_mm: 'Min',
     f_pax: 'Passeggeri',
     f_bags: 'Bagagli',
     f_phone: 'Telefono di contatto',
@@ -259,6 +263,8 @@ const I18N = {
     f_addr_ph: 'Dirección, aeropuerto, hotel...',
     f_date: 'Fecha',
     f_time: 'Hora',
+    f_hh: 'Hora',
+    f_mm: 'Min',
     f_pax: 'Pasajeros',
     f_bags: 'Equipaje',
     f_phone: 'Teléfono de contacto',
@@ -346,6 +352,8 @@ const I18N = {
     f_addr_ph: 'Адрес, аэропорт, отель...',
     f_date: 'Дата',
     f_time: 'Время',
+    f_hh: 'Час',
+    f_mm: 'Мин',
     f_pax: 'Пассажиры',
     f_bags: 'Багаж',
     f_phone: 'Контактный телефон',
@@ -739,7 +747,7 @@ document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
 function validateForm() {
   let valid = true;
-  const required = ['pickup', 'destination', 'date', 'time', 'phone'];
+  const required = ['pickup', 'destination', 'date', 'timeHour', 'timeMinute', 'phone'];
 
   required.forEach(id => {
     const el = document.getElementById(id);
@@ -762,7 +770,7 @@ function validateForm() {
 }
 
 // прибираємо підсвітку помилки при введенні
-['pickup', 'destination', 'date', 'time', 'phone'].forEach(id => {
+['pickup', 'destination', 'date', 'timeHour', 'timeMinute', 'phone'].forEach(id => {
   document.getElementById(id).addEventListener('input', (e) => {
     e.target.classList.remove('is-invalid');
     formError.hidden = true;
@@ -774,7 +782,11 @@ function collectData() {
     pickup: document.getElementById('pickup').value.trim(),
     destination: document.getElementById('destination').value.trim(),
     date: document.getElementById('date').value,
-    time: document.getElementById('time').value,
+    time: (function () {
+      const h = document.getElementById('timeHour').value;
+      const m = document.getElementById('timeMinute').value;
+      return (h && m) ? h + ':' + m : '';   // порожньо, поки не обрано обидва
+    })(),
     passengers: document.getElementById('passengers').value,
     luggage: document.getElementById('luggage').value,
     phone: document.getElementById('phone').value.trim()
