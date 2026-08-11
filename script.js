@@ -109,6 +109,15 @@ const I18N = {
     rev1_text: 'Flawless from start to finish. The driver was waiting at arrivals with a sign, helped with every suitcase, and the car was immaculate. We reached our hotel on Lake Como completely relaxed.',
     rev2_text: 'Booked a transfer from Fiumicino for a business meeting. On time to the minute, a quiet ride, fixed price with no surprises. Exactly what a premium service should be.',
     rev3_text: 'We travelled as a family of seven with a mountain of luggage — the Caravelle swallowed it all. The driver was patient with our kids and even suggested a great lunch stop. Highly recommended!',
+    rf_title: 'Leave your review',
+    rf_note: 'Tell us about your ride — we publish every honest review.',
+    rf_name: 'Your name',
+    rf_name_ph: 'James R.',
+    rf_text: 'Your review',
+    rf_text_ph: 'How was your transfer?',
+    rf_submit: 'Send review',
+    rf_error: 'Please add your name and a few words about the ride.',
+    rf_success: 'Thank you for your review! It will be published shortly.',
 
     footer_tag: 'Premium private transfers across Italy.',
     footer_contacts: 'Contacts',
@@ -187,6 +196,15 @@ const I18N = {
     rev1_text: 'Impeccabile dall\'inizio alla fine. L\'autista ci aspettava agli arrivi con un cartello, ci ha aiutato con tutte le valigie e l\'auto era immacolata. Siamo arrivati in hotel sul Lago di Como completamente rilassati.',
     rev2_text: 'Ho prenotato un transfer da Fiumicino per una riunione di lavoro. Puntuale al minuto, viaggio silenzioso, prezzo fisso senza sorprese. Esattamente ciò che dovrebbe essere un servizio premium.',
     rev3_text: 'Abbiamo viaggiato in sette con una montagna di bagagli — la Caravelle ha accolto tutto. L\'autista è stato paziente con i bambini e ci ha persino consigliato un\'ottima sosta pranzo. Consigliatissimo!',
+    rf_title: 'Lascia la tua recensione',
+    rf_note: 'Raccontaci del tuo viaggio — pubblichiamo ogni recensione sincera.',
+    rf_name: 'Il tuo nome',
+    rf_name_ph: 'Marco B.',
+    rf_text: 'La tua recensione',
+    rf_text_ph: 'Com\'è andato il transfer?',
+    rf_submit: 'Invia recensione',
+    rf_error: 'Inserisci il tuo nome e qualche parola sul viaggio.',
+    rf_success: 'Grazie per la tua recensione! Sarà pubblicata a breve.',
 
     footer_tag: 'Transfer privati premium in tutta Italia.',
     footer_contacts: 'Contatti',
@@ -265,6 +283,15 @@ const I18N = {
     rev1_text: 'Impecable de principio a fin. El conductor nos esperaba en llegadas con un cartel, ayudó con todas las maletas y el coche estaba impecable. Llegamos a nuestro hotel del Lago de Como totalmente relajados.',
     rev2_text: 'Reservé un traslado desde Fiumicino para una reunión de negocios. Puntual al minuto, viaje silencioso, precio fijo sin sorpresas. Exactamente lo que debe ser un servicio premium.',
     rev3_text: 'Viajamos siete personas con una montaña de equipaje — la Caravelle lo tragó todo. El conductor fue paciente con los niños y hasta nos recomendó una parada para comer. ¡Muy recomendable!',
+    rf_title: 'Deja tu reseña',
+    rf_note: 'Cuéntanos sobre tu viaje — publicamos todas las reseñas sinceras.',
+    rf_name: 'Tu nombre',
+    rf_name_ph: 'Carlos M.',
+    rf_text: 'Tu reseña',
+    rf_text_ph: '¿Qué tal fue tu traslado?',
+    rf_submit: 'Enviar reseña',
+    rf_error: 'Añade tu nombre y unas palabras sobre el viaje.',
+    rf_success: '¡Gracias por tu reseña! Se publicará en breve.',
 
     footer_tag: 'Traslados privados premium por toda Italia.',
     footer_contacts: 'Contacto',
@@ -343,6 +370,15 @@ const I18N = {
     rev1_text: 'Безупречно от начала до конца. Водитель ждал в зале прилёта с табличкой, помог со всеми чемоданами, машина идеально чистая. Доехали до отеля на озере Комо совершенно расслабленными.',
     rev2_text: 'Бронировал трансфер из Фьюмичино на деловую встречу. Вовремя с точностью до минуты, тихая поездка, фиксированная цена без сюрпризов. Именно таким и должен быть премиум-сервис.',
     rev3_text: 'Ехали всемером с горой багажа — Caravelle вместила всё. Водитель был терпелив с детьми и даже посоветовал отличное место для обеда. Очень рекомендуем!',
+    rf_title: 'Оставьте свой отзыв',
+    rf_note: 'Расскажите о поездке — мы публикуем каждый честный отзыв.',
+    rf_name: 'Ваше имя',
+    rf_name_ph: 'Анна С.',
+    rf_text: 'Ваш отзыв',
+    rf_text_ph: 'Как прошёл ваш трансфер?',
+    rf_submit: 'Отправить отзыв',
+    rf_error: 'Укажите имя и напишите пару слов о поездке.',
+    rf_success: 'Спасибо за отзыв! Он будет опубликован в ближайшее время.',
 
     footer_tag: 'Премиальные частные трансферы по Италии.',
     footer_contacts: 'Контакты',
@@ -828,6 +864,86 @@ form.addEventListener('submit', async (e) => {
   formSuccess.hidden = false;
   formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
+
+/* ============================================================
+   ФОРМА ВІДГУКУ: зірки + відправка власнику на модерацію
+   ============================================================ */
+(function () {
+  const form = document.getElementById('reviewForm');
+  if (!form) return;
+
+  const starsBox = document.getElementById('reviewStars');
+  const stars = [...starsBox.querySelectorAll('button')];
+  const nameInput = document.getElementById('revName');
+  const textInput = document.getElementById('revText');
+  const errorBox = document.getElementById('reviewError');
+  const successBox = document.getElementById('reviewSuccess');
+  const submitBtn = document.getElementById('reviewSubmit');
+  let rating = 5;
+
+  function paintStars(n) {
+    stars.forEach(s => s.classList.toggle('is-on', +s.dataset.value <= n));
+  }
+  stars.forEach(s => {
+    s.addEventListener('click', () => { rating = +s.dataset.value; paintStars(rating); });
+    s.addEventListener('mouseenter', () => paintStars(+s.dataset.value));
+  });
+  starsBox.addEventListener('mouseleave', () => paintStars(rating));
+
+  [nameInput, textInput].forEach(el => {
+    el.addEventListener('input', () => {
+      el.classList.remove('is-invalid');
+      errorBox.hidden = true;
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nameOk = nameInput.value.trim().length > 1;
+    const textOk = textInput.value.trim().length > 4;
+    nameInput.classList.toggle('is-invalid', !nameOk);
+    textInput.classList.toggle('is-invalid', !textOk);
+    if (!nameOk || !textOk) {
+      errorBox.hidden = false;
+      return;
+    }
+    errorBox.hidden = true;
+    submitBtn.disabled = true;
+
+    const text =
+      '⭐ НОВИЙ ВІДГУК — VIP Transfer Italy\n\n' +
+      'Оцінка: ' + '★'.repeat(rating) + '☆'.repeat(5 - rating) + ' (' + rating + '/5)\n' +
+      'Ім\'я: ' + nameInput.value.trim() + '\n' +
+      'Мова сайту: ' + currentLang.toUpperCase() + '\n\n' +
+      nameInput.value.trim() + ':\n"' + textInput.value.trim() + '"';
+
+    try {
+      if (TELEGRAM_BOT_TOKEN.indexOf('ЗАМІНИ') === -1) {
+        await Promise.allSettled(
+          TELEGRAM_CHAT_IDS.map(id => fetch(
+            'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ chat_id: id, text: text })
+            }
+          ))
+        );
+      } else {
+        console.warn('[VIP Transfer] Відгук не відправлено: не налаштований бот', text);
+      }
+    } catch (err) {
+      console.error('[VIP Transfer] Помилка відправки відгуку:', err);
+    }
+
+    // клієнт у будь-якому разі бачить подяку
+    form.querySelectorAll('.review-form__stars, .form__field, .review-form__note')
+      .forEach(el => { el.style.display = 'none'; });
+    submitBtn.style.display = 'none';
+    successBox.hidden = false;
+  });
+})();
 
 /* ============================================================
    КНОПКА "ЗАБРОНЮВАТИ В WHATSAPP"

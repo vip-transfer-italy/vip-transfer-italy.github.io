@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚘</text></svg>">
 </head>
 <body>
@@ -371,6 +371,45 @@
           </figcaption>
         </figure>
       </div>
+
+      <form class="review-form reveal" id="reviewForm" novalidate>
+        <h3 data-i18n="rf_title">Leave your review</h3>
+        <p class="review-form__note" data-i18n="rf_note">Tell us about your ride — we publish every honest review.</p>
+
+        <div class="review-form__stars" id="reviewStars" role="radiogroup" aria-label="Rating">
+          <button type="button" data-value="1" class="is-on" aria-label="1">★</button>
+          <button type="button" data-value="2" class="is-on" aria-label="2">★</button>
+          <button type="button" data-value="3" class="is-on" aria-label="3">★</button>
+          <button type="button" data-value="4" class="is-on" aria-label="4">★</button>
+          <button type="button" data-value="5" class="is-on" aria-label="5">★</button>
+        </div>
+
+        <div class="form__field">
+          <label for="revName" data-i18n="rf_name">Your name</label>
+          <input type="text" id="revName" name="revName" required
+                 data-i18n-placeholder="rf_name_ph" placeholder="James R.">
+        </div>
+
+        <div class="form__field">
+          <label for="revText" data-i18n="rf_text">Your review</label>
+          <textarea id="revText" name="revText" rows="4" required
+                    data-i18n-placeholder="rf_text_ph"
+                    placeholder="How was your transfer?"></textarea>
+        </div>
+
+        <p class="form__error" id="reviewError" hidden data-i18n="rf_error">
+          Please add your name and a few words about the ride.
+        </p>
+
+        <button type="submit" class="btn btn--gold review-form__submit" id="reviewSubmit" data-i18n="rf_submit">
+          Send review
+        </button>
+
+        <div class="form__success" id="reviewSuccess" hidden>
+          <div class="form__success-icon">★</div>
+          <p data-i18n="rf_success">Thank you for your review! It will be published shortly.</p>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -406,6 +445,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
