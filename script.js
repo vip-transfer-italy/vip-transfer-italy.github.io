@@ -91,6 +91,13 @@ const I18N = {
     f_success: 'Thank you for your order! Our manager will contact you on WhatsApp shortly.',
     f_error: 'Please fill in all required fields correctly.',
 
+    nav_reviews: 'Reviews',
+    reviews_eyebrow: 'Reviews',
+    reviews_title: 'What Our Clients Say',
+    rev1_text: 'Flawless from start to finish. The driver was waiting at arrivals with a sign, helped with every suitcase, and the car was immaculate. We reached our hotel on Lake Como completely relaxed.',
+    rev2_text: 'Booked a transfer from Fiumicino for a business meeting. On time to the minute, a quiet ride, fixed price with no surprises. Exactly what a premium service should be.',
+    rev3_text: 'We travelled as a family of seven with a mountain of luggage — the Caravelle swallowed it all. The driver was patient with our kids and even suggested a great lunch stop. Highly recommended!',
+
     footer_tag: 'Premium private transfers across Italy.',
     footer_contacts: 'Contacts',
     footer_menu: 'Menu',
@@ -154,6 +161,13 @@ const I18N = {
     f_wa_msg: 'Salve! Vorrei prenotare un transfer.',
     f_success: 'Grazie per la richiesta! Un nostro manager ti contatterà su WhatsApp a breve.',
     f_error: 'Compila correttamente tutti i campi obbligatori.',
+
+    nav_reviews: 'Recensioni',
+    reviews_eyebrow: 'Recensioni',
+    reviews_title: 'Cosa Dicono i Nostri Clienti',
+    rev1_text: 'Impeccabile dall\'inizio alla fine. L\'autista ci aspettava agli arrivi con un cartello, ci ha aiutato con tutte le valigie e l\'auto era immacolata. Siamo arrivati in hotel sul Lago di Como completamente rilassati.',
+    rev2_text: 'Ho prenotato un transfer da Fiumicino per una riunione di lavoro. Puntuale al minuto, viaggio silenzioso, prezzo fisso senza sorprese. Esattamente ciò che dovrebbe essere un servizio premium.',
+    rev3_text: 'Abbiamo viaggiato in sette con una montagna di bagagli — la Caravelle ha accolto tutto. L\'autista è stato paziente con i bambini e ci ha persino consigliato un\'ottima sosta pranzo. Consigliatissimo!',
 
     footer_tag: 'Transfer privati premium in tutta Italia.',
     footer_contacts: 'Contatti',
@@ -219,6 +233,13 @@ const I18N = {
     f_success: '¡Gracias por tu solicitud! Un gestor te contactará por WhatsApp en breve.',
     f_error: 'Por favor, rellena correctamente todos los campos obligatorios.',
 
+    nav_reviews: 'Reseñas',
+    reviews_eyebrow: 'Reseñas',
+    reviews_title: 'Lo Que Dicen Nuestros Clientes',
+    rev1_text: 'Impecable de principio a fin. El conductor nos esperaba en llegadas con un cartel, ayudó con todas las maletas y el coche estaba impecable. Llegamos a nuestro hotel del Lago de Como totalmente relajados.',
+    rev2_text: 'Reservé un traslado desde Fiumicino para una reunión de negocios. Puntual al minuto, viaje silencioso, precio fijo sin sorpresas. Exactamente lo que debe ser un servicio premium.',
+    rev3_text: 'Viajamos siete personas con una montaña de equipaje — la Caravelle lo tragó todo. El conductor fue paciente con los niños y hasta nos recomendó una parada para comer. ¡Muy recomendable!',
+
     footer_tag: 'Traslados privados premium por toda Italia.',
     footer_contacts: 'Contacto',
     footer_menu: 'Menú',
@@ -282,6 +303,13 @@ const I18N = {
     f_wa_msg: 'Здравствуйте! Хочу забронировать трансфер.',
     f_success: 'Спасибо за заказ! С вами свяжется менеджер в WhatsApp.',
     f_error: 'Пожалуйста, заполните все обязательные поля корректно.',
+
+    nav_reviews: 'Отзывы',
+    reviews_eyebrow: 'Отзывы',
+    reviews_title: 'Что говорят наши клиенты',
+    rev1_text: 'Безупречно от начала до конца. Водитель ждал в зале прилёта с табличкой, помог со всеми чемоданами, машина идеально чистая. Доехали до отеля на озере Комо совершенно расслабленными.',
+    rev2_text: 'Бронировал трансфер из Фьюмичино на деловую встречу. Вовремя с точностью до минуты, тихая поездка, фиксированная цена без сюрпризов. Именно таким и должен быть премиум-сервис.',
+    rev3_text: 'Ехали всемером с горой багажа — Caravelle вместила всё. Водитель был терпелив с детьми и даже посоветовал отличное место для обеда. Очень рекомендуем!',
 
     footer_tag: 'Премиальные частные трансферы по Италии.',
     footer_contacts: 'Контакты',
