@@ -98,6 +98,26 @@ const I18N = {
     f_success: 'Thank you for your order! Our manager will contact you on WhatsApp shortly.',
     f_error: 'Please fill in all required fields correctly.',
 
+    routes_eyebrow: 'Directions',
+    routes_title: 'Popular routes',
+    routes_note: 'Tap a route to fill in the form — we will send you the exact price.',
+    routes_any: 'Any other direction in Italy or Europe — just ask.',
+
+    faq_eyebrow: 'FAQ',
+    faq_title: 'Good to know',
+    faq_q1: 'What if my flight is delayed?',
+    faq_a1: 'We track your flight number and adjust the pickup time automatically. Waiting is free for 60 minutes after landing.',
+    faq_q2: 'How do I pay?',
+    faq_a2: 'Cash or card directly to the driver, or by bank transfer in advance. The price is fixed and confirmed before the ride.',
+    faq_q3: 'Do you provide child seats?',
+    faq_a3: 'Yes, free of charge. Just mention the age of the children when booking and we will prepare the right seat.',
+    faq_q4: 'Where will I meet the driver?',
+    faq_a4: 'In the arrivals hall with a name sign. He will help with the luggage and walk you to the car.',
+    faq_q5: 'Can I cancel my booking?',
+    faq_a5: 'Yes — free cancellation up to 24 hours before the ride. Just message us on WhatsApp or Telegram.',
+    faq_q6: 'Do you drive outside Italy?',
+    faq_a6: 'Yes. We also handle transfers to Switzerland, France, Austria and other neighbouring countries.',
+
     stats_eyebrow: 'Why Us',
     stats_title: 'Numbers speak louder than words',
     stats1: 'Years of experience',
@@ -186,6 +206,26 @@ const I18N = {
     f_wa_msg: 'Salve! Vorrei prenotare un transfer.',
     f_success: 'Grazie per la richiesta! Un nostro manager ti contatterà su WhatsApp a breve.',
     f_error: 'Compila correttamente tutti i campi obbligatori.',
+
+    routes_eyebrow: 'Destinazioni',
+    routes_title: 'Tratte più richieste',
+    routes_note: 'Tocca una tratta per compilare il modulo — ti inviamo il prezzo esatto.',
+    routes_any: 'Qualsiasi altra destinazione in Italia o in Europa — chiedi pure.',
+
+    faq_eyebrow: 'FAQ',
+    faq_title: 'Buono a sapersi',
+    faq_q1: 'E se il mio volo è in ritardo?',
+    faq_a1: 'Monitoriamo il numero del volo e adattiamo l\'orario automaticamente. L\'attesa è gratuita per 60 minuti dall\'atterraggio.',
+    faq_q2: 'Come si paga?',
+    faq_a2: 'In contanti o con carta direttamente all\'autista, oppure con bonifico in anticipo. Il prezzo è fisso e confermato prima del viaggio.',
+    faq_q3: 'Avete seggiolini per bambini?',
+    faq_a3: 'Sì, gratuitamente. Indica l\'età dei bambini al momento della prenotazione e prepareremo il seggiolino adatto.',
+    faq_q4: 'Dove incontro l\'autista?',
+    faq_a4: 'Nell\'area arrivi con un cartello con il tuo nome. Ti aiuterà con i bagagli e ti accompagnerà all\'auto.',
+    faq_q5: 'Posso annullare la prenotazione?',
+    faq_a5: 'Sì — cancellazione gratuita fino a 24 ore prima del viaggio. Scrivici su WhatsApp o Telegram.',
+    faq_q6: 'Viaggiate anche fuori dall\'Italia?',
+    faq_a6: 'Sì. Effettuiamo transfer anche verso Svizzera, Francia, Austria e altri paesi confinanti.',
 
     stats_eyebrow: 'Perché Noi',
     stats_title: 'I numeri parlano più delle parole',
@@ -276,6 +316,26 @@ const I18N = {
     f_success: '¡Gracias por tu solicitud! Un gestor te contactará por WhatsApp en breve.',
     f_error: 'Por favor, rellena correctamente todos los campos obligatorios.',
 
+    routes_eyebrow: 'Destinos',
+    routes_title: 'Rutas más solicitadas',
+    routes_note: 'Toca una ruta para rellenar el formulario — te enviaremos el precio exacto.',
+    routes_any: 'Cualquier otro destino en Italia o Europa — solo pregunta.',
+
+    faq_eyebrow: 'FAQ',
+    faq_title: 'Bueno saberlo',
+    faq_q1: '¿Y si mi vuelo se retrasa?',
+    faq_a1: 'Seguimos tu número de vuelo y ajustamos la hora automáticamente. La espera es gratuita durante 60 minutos tras el aterrizaje.',
+    faq_q2: '¿Cómo se paga?',
+    faq_a2: 'En efectivo o con tarjeta directamente al conductor, o por transferencia por adelantado. El precio es fijo y se confirma antes del viaje.',
+    faq_q3: '¿Tienen sillas infantiles?',
+    faq_a3: 'Sí, sin coste. Indica la edad de los niños al reservar y prepararemos la silla adecuada.',
+    faq_q4: '¿Dónde encuentro al conductor?',
+    faq_a4: 'En la sala de llegadas con un cartel con tu nombre. Te ayudará con el equipaje y te acompañará al coche.',
+    faq_q5: '¿Puedo cancelar la reserva?',
+    faq_a5: 'Sí — cancelación gratuita hasta 24 horas antes del viaje. Escríbenos por WhatsApp o Telegram.',
+    faq_q6: '¿Viajan fuera de Italia?',
+    faq_a6: 'Sí. También realizamos traslados a Suiza, Francia, Austria y otros países vecinos.',
+
     stats_eyebrow: 'Por Qué Nosotros',
     stats_title: 'Los números hablan más que las palabras',
     stats1: 'Años de experiencia',
@@ -364,6 +424,26 @@ const I18N = {
     f_wa_msg: 'Здравствуйте! Хочу забронировать трансфер.',
     f_success: 'Спасибо за заказ! С вами свяжется менеджер в WhatsApp.',
     f_error: 'Пожалуйста, заполните все обязательные поля корректно.',
+
+    routes_eyebrow: 'Направления',
+    routes_title: 'Популярные маршруты',
+    routes_note: 'Нажмите на маршрут — он подставится в форму, и мы пришлём точную цену.',
+    routes_any: 'Любое другое направление по Италии или Европе — просто спросите.',
+
+    faq_eyebrow: 'Вопросы',
+    faq_title: 'Полезно знать',
+    faq_q1: 'А если мой рейс задержат?',
+    faq_a1: 'Мы отслеживаем номер рейса и сами сдвигаем время подачи. Ожидание бесплатно в течение 60 минут после посадки.',
+    faq_q2: 'Как оплатить?',
+    faq_a2: 'Наличными или картой водителю, либо переводом заранее. Цена фиксированная и подтверждается до поездки.',
+    faq_q3: 'Есть ли детские кресла?',
+    faq_a3: 'Да, бесплатно. Укажите возраст детей при бронировании — подготовим подходящее кресло.',
+    faq_q4: 'Где я встречу водителя?',
+    faq_a4: 'В зале прилёта с табличкой с вашим именем. Он поможет с багажом и проводит до машины.',
+    faq_q5: 'Можно ли отменить бронь?',
+    faq_a5: 'Да — бесплатная отмена за 24 часа до поездки. Просто напишите нам в WhatsApp или Telegram.',
+    faq_q6: 'Возите ли вы за пределы Италии?',
+    faq_a6: 'Да. Выполняем трансферы в Швейцарию, Францию, Австрию и другие соседние страны.',
 
     stats_eyebrow: 'Почему мы',
     stats_title: 'Цифры говорят громче слов',
@@ -876,6 +956,43 @@ form.addEventListener('submit', async (e) => {
   formSuccess.hidden = false;
   formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
+
+/* ============================================================
+   ПОПУЛЯРНІ НАПРЯМКИ: клік підставляє маршрут у форму
+   ============================================================ */
+document.querySelectorAll('.route').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pickup = document.getElementById('pickup');
+    const dest = document.getElementById('destination');
+    pickup.value = btn.dataset.from;
+    dest.value = btn.dataset.to;
+    pickup.classList.remove('is-invalid');
+    dest.classList.remove('is-invalid');
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ============================================================
+   ЛИПКА КНОПКА НА МОБІЛЬНОМУ: з'являється після hero
+   і ховається, коли форма бронювання вже на екрані
+   ============================================================ */
+(function () {
+  const bar = document.getElementById('ctaBar');
+  const hero = document.getElementById('hero');
+  const booking = document.getElementById('booking');
+  if (!bar || !hero || !booking) return;
+
+  function update() {
+    const pastHero = window.scrollY > hero.offsetHeight * 0.6;
+    const b = booking.getBoundingClientRect();
+    const bookingVisible = b.top < window.innerHeight && b.bottom > 120;
+    bar.classList.toggle('is-shown', pastHero && !bookingVisible);
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
 
 /* ============================================================
    ФОРМА ВІДГУКУ: зірки + відправка власнику на модерацію

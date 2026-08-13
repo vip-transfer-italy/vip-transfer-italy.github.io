@@ -15,8 +15,37 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚘</text></svg>">
+  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/favicon.svg">
+  <meta name="theme-color" content="#0a0a0c">
+
+  <!-- дані для Google: тип бізнесу, телефон, месенджери, зона роботи -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "additionalType": "https://schema.org/TaxiService",
+    "name": "VIP Transfer Italy",
+    "description": "Premium private transfers across Italy — airports, hotels, lakes and ski resorts. Fixed prices, English-speaking drivers.",
+    "url": "https://viptransferitaliy.com/",
+    "telephone": "+39 351 397 5476",
+    "image": "https://viptransferitaliy.com/images/mercedes-v-class.jpg",
+    "priceRange": "€€",
+    "address": { "@type": "PostalAddress", "addressCountry": "IT" },
+    "areaServed": { "@type": "Country", "name": "Italy" },
+    "sameAs": [
+      "https://wa.me/393513975476",
+      "https://t.me/VipTransferIt"
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }]
+  }
+  </script>
 </head>
 <body>
 
@@ -336,6 +365,48 @@
     </div>
   </section>
 
+  <!-- ===== POPULAR ROUTES ===== -->
+  <section class="section routes" id="routes">
+    <div class="container">
+      <p class="section__eyebrow reveal" data-i18n="routes_eyebrow">Directions</p>
+      <h2 class="section__title reveal" data-i18n="routes_title">Popular routes</h2>
+      <p class="routes__note reveal" data-i18n="routes_note">
+        Tap a route to fill in the form — we will send you the exact price.
+      </p>
+
+      <ul class="routes__grid">
+        <li class="reveal"><button type="button" class="route" data-from="Milan Malpensa Airport (MXP), Italy" data-to="Lake Como, Italy">
+          <span class="route__path"><b>Malpensa</b> <i>→</i> <b>Lake Como</b></span>
+          <span class="route__meta">~1 h 10 min · 55 km</span>
+        </button></li>
+        <li class="reveal"><button type="button" class="route" data-from="Rome Fiumicino Airport (FCO), Italy" data-to="Rome city centre, Italy">
+          <span class="route__path"><b>Fiumicino</b> <i>→</i> <b>Roma centro</b></span>
+          <span class="route__meta">~45 min · 32 km</span>
+        </button></li>
+        <li class="reveal"><button type="button" class="route" data-from="Naples Capodichino Airport (NAP), Italy" data-to="Positano, Amalfi Coast, Italy">
+          <span class="route__path"><b>Napoli</b> <i>→</i> <b>Positano</b></span>
+          <span class="route__meta">~1 h 40 min · 65 km</span>
+        </button></li>
+        <li class="reveal"><button type="button" class="route" data-from="Venice Marco Polo Airport (VCE), Italy" data-to="Venezia, Piazzale Roma, Italy">
+          <span class="route__path"><b>Marco Polo</b> <i>→</i> <b>Venezia</b></span>
+          <span class="route__meta">~25 min · 13 km</span>
+        </button></li>
+        <li class="reveal"><button type="button" class="route" data-from="Milan Malpensa Airport (MXP), Italy" data-to="Livigno, Italy">
+          <span class="route__path"><b>Malpensa</b> <i>→</i> <b>Livigno</b></span>
+          <span class="route__meta">~4 h · 250 km</span>
+        </button></li>
+        <li class="reveal"><button type="button" class="route" data-from="Florence Airport (FLR), Italy" data-to="Siena, Tuscany, Italy">
+          <span class="route__path"><b>Firenze</b> <i>→</i> <b>Siena</b></span>
+          <span class="route__meta">~1 h 15 min · 75 km</span>
+        </button></li>
+      </ul>
+
+      <p class="routes__any reveal" data-i18n="routes_any">
+        Any other direction in Italy or Europe — just ask.
+      </p>
+    </div>
+  </section>
+
   <!-- ===== STATS ===== -->
   <section class="section stats-section">
     <div class="container">
@@ -439,6 +510,44 @@
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <p class="section__eyebrow reveal" data-i18n="faq_eyebrow">FAQ</p>
+      <h2 class="section__title reveal" data-i18n="faq_title">Good to know</h2>
+
+      <div class="faq__list">
+        <details class="faq__item reveal">
+          <summary data-i18n="faq_q1">What if my flight is delayed?</summary>
+          <p data-i18n="faq_a1">We track your flight number and adjust the pickup time automatically. Waiting is free for 60 minutes after landing.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary data-i18n="faq_q2">How do I pay?</summary>
+          <p data-i18n="faq_a2">Cash or card directly to the driver, or by bank transfer in advance. The price is fixed and confirmed before the ride.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary data-i18n="faq_q3">Do you provide child seats?</summary>
+          <p data-i18n="faq_a3">Yes, free of charge. Just mention the age of the children when booking and we will prepare the right seat.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary data-i18n="faq_q4">Where will I meet the driver?</summary>
+          <p data-i18n="faq_a4">In the arrivals hall with a name sign. He will help with the luggage and walk you to the car.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary data-i18n="faq_q5">Can I cancel my booking?</summary>
+          <p data-i18n="faq_a5">Yes — free cancellation up to 24 hours before the ride. Just message us on WhatsApp or Telegram.</p>
+        </details>
+        <details class="faq__item reveal">
+          <summary data-i18n="faq_q6">Do you drive outside Italy?</summary>
+          <p data-i18n="faq_a6">Yes. We also handle transfers to Switzerland, France, Austria and other neighbouring countries.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STICKY MOBILE CTA ===== -->
+  <a href="#booking" class="cta-bar" id="ctaBar" data-i18n="hero_cta">Get a Price</a>
+
   <!-- ===== FOOTER / CONTACTS ===== -->
   <footer class="footer" id="contacts">
     <div class="container">
@@ -471,6 +580,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>
