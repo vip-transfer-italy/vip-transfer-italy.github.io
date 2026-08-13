@@ -35,6 +35,17 @@ const USE_FORMSUBMIT = false;
 const FORMSUBMIT_EMAIL = 'ЗАМІНИ_НА_СВОЮ_ПОШТУ@gmail.com';
 
 /* ============================================================
+   GOOGLE ANALYTICS: відстеження важливих дій
+   Працює тихо — якщо аналітика не завантажилась (блокувальник
+   реклами тощо), сайт продовжує працювати без помилок.
+   ============================================================ */
+function track(eventName, params) {
+  try {
+    if (typeof gtag === 'function') gtag('event', eventName, params || {});
+  } catch (e) { /* ignore */ }
+}
+
+/* ============================================================
    СЛОВНИК ПЕРЕКЛАДІВ
    ============================================================ */
 const I18N = {
@@ -951,6 +962,14 @@ form.addEventListener('submit', async (e) => {
     console.error('[VIP Transfer] Не вдалося відправити сповіщення:', err);
   }
 
+  // головна подія для статистики — заявка з форми
+  track('generate_lead', {
+    method: 'booking_form',
+    language: currentLang,
+    passengers: data.passengers,
+    luggage: data.luggage
+  });
+
   form.querySelector('.form__grid').style.display = 'none';
   submitBtn.style.display = 'none';
   formSuccess.hidden = false;
@@ -964,6 +983,7 @@ document.querySelectorAll('.route').forEach(btn => {
   btn.addEventListener('click', () => {
     const pickup = document.getElementById('pickup');
     const dest = document.getElementById('destination');
+    track('select_route', { route: btn.dataset.from + ' -> ' + btn.dataset.to });
     pickup.value = btn.dataset.from;
     dest.value = btn.dataset.to;
     pickup.classList.remove('is-invalid');
@@ -1066,6 +1086,8 @@ document.querySelectorAll('.route').forEach(btn => {
       console.error('[VIP Transfer] Помилка відправки відгуку:', err);
     }
 
+    track('submit_review', { rating: rating, language: currentLang });
+
     // клієнт у будь-якому разі бачить подяку
     form.querySelectorAll('.review-form__stars, .form__field, .review-form__note')
       .forEach(el => { el.style.display = 'none'; });
@@ -1088,6 +1110,31 @@ document.getElementById('waBookBtn').addEventListener('click', function () {
   if (d.passengers)  lines.push('👥 ' + t.f_pax + ': ' + d.passengers);
   if (d.luggage && d.luggage !== '0') lines.push('🧳 ' + t.f_bags + ': ' + d.luggage);
   this.href = 'https://wa.me/393513975476?text=' + encodeURIComponent(lines.join('\n'));
+});
+
+/* ============================================================
+   ВІДСТЕЖЕННЯ КОНТАКТІВ (WhatsApp / Telegram / телефон)
+   ============================================================ */
+document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+  a.addEventListener('click', () => {
+    track('contact_click', {
+      channel: 'whatsapp',
+      placement: a.id === 'waBookBtn' ? 'booking_form' : 'floating_button',
+      language: currentLang
+    });
+  });
+});
+
+document.querySelectorAll('a[href*="t.me"]').forEach(a => {
+  a.addEventListener('click', () => {
+    track('contact_click', { channel: 'telegram', language: currentLang });
+  });
+});
+
+document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+  a.addEventListener('click', () => {
+    track('contact_click', { channel: 'phone', language: currentLang });
+  });
 });
 
 /* ============================================================
