@@ -100,7 +100,6 @@ const I18N = {
     f_hh: 'Hour',
     f_mm: 'Min',
     f_pax: 'Passengers',
-    f_bags: 'Luggage',
     f_phone: 'Contact phone',
     f_phone_ph: '+39 ...',
     f_submit: 'Book Now',
@@ -210,7 +209,6 @@ const I18N = {
     f_hh: 'Ora',
     f_mm: 'Min',
     f_pax: 'Passeggeri',
-    f_bags: 'Bagagli',
     f_phone: 'Telefono di contatto',
     f_phone_ph: '+39 ...',
     f_submit: 'Prenota',
@@ -320,7 +318,6 @@ const I18N = {
     f_hh: 'Hora',
     f_mm: 'Min',
     f_pax: 'Pasajeros',
-    f_bags: 'Equipaje',
     f_phone: 'Teléfono de contacto',
     f_phone_ph: '+39 ...',
     f_submit: 'Reservar',
@@ -430,7 +427,6 @@ const I18N = {
     f_hh: 'Час',
     f_mm: 'Мин',
     f_pax: 'Пассажиры',
-    f_bags: 'Багаж',
     f_phone: 'Контактный телефон',
     f_phone_ph: '+39 ...',
     f_submit: 'Узнать цену',
@@ -883,7 +879,6 @@ function collectData() {
       return (h && m) ? h + ':' + m : '';   // порожньо, поки не обрано обидва
     })(),
     passengers: document.getElementById('passengers').value,
-    luggage: document.getElementById('luggage').value,
     phone: document.getElementById('phone').value.trim()
   };
 }
@@ -896,7 +891,6 @@ async function sendToTelegram(d) {
     '🏁 Куди: ' + d.destination + '\n' +
     '📅 Дата: ' + d.date + '  🕒 ' + d.time + '\n' +
     '👥 Пасажирів: ' + d.passengers + '\n' +
-    '🧳 Багаж: ' + d.luggage + '\n' +
     '📞 Телефон: ' + d.phone;
 
   // шлемо всім отримувачам паралельно; якщо один чат недоступний
@@ -928,7 +922,6 @@ async function sendToFormSubmit(d) {
       Date: d.date,
       Time: d.time,
       Passengers: d.passengers,
-      Luggage: d.luggage,
       Phone: d.phone
     })
   });
@@ -970,8 +963,7 @@ form.addEventListener('submit', async (e) => {
   track('generate_lead', {
     method: 'booking_form',
     language: currentLang,
-    passengers: data.passengers,
-    luggage: data.luggage
+    passengers: data.passengers
   });
 
   form.querySelector('.form__grid').style.display = 'none';
@@ -1112,7 +1104,6 @@ document.getElementById('waBookBtn').addEventListener('click', function () {
   if (d.destination) lines.push('🏁 ' + t.f_dest + ': ' + d.destination);
   if (d.date)        lines.push('📅 ' + d.date + (d.time ? ' 🕒 ' + d.time : ''));
   if (d.passengers)  lines.push('👥 ' + t.f_pax + ': ' + d.passengers);
-  if (d.luggage && d.luggage !== '0') lines.push('🧳 ' + t.f_bags + ': ' + d.luggage);
   this.href = 'https://wa.me/393513975476?text=' + encodeURIComponent(lines.join('\n'));
 });
 
