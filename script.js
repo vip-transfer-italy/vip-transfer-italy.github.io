@@ -56,6 +56,7 @@ const I18N = {
     nav_contacts: 'Contacts',
 
     hero_eyebrow: 'Private Chauffeur Service',
+    hero_langs: 'We speak',
     hero_title: 'Premium Private Transfers in Italy',
     hero_slogan: 'Comfort. Punctuality. Style.',
     hero_badge: 'Best Price in Europe',
@@ -165,6 +166,7 @@ const I18N = {
     nav_contacts: 'Contatti',
 
     hero_eyebrow: 'Servizio Autista Privato',
+    hero_langs: 'Parliamo',
     hero_title: 'Transfer Privati Premium in Italia',
     hero_slogan: 'Comfort. Puntualità. Stile.',
     hero_badge: 'Miglior Prezzo in Europa',
@@ -274,6 +276,7 @@ const I18N = {
     nav_contacts: 'Contacto',
 
     hero_eyebrow: 'Servicio de Chófer Privado',
+    hero_langs: 'Hablamos',
     hero_title: 'Traslados Privados Premium en Italia',
     hero_slogan: 'Confort. Puntualidad. Estilo.',
     hero_badge: 'Mejor Precio de Europa',
@@ -383,6 +386,7 @@ const I18N = {
     nav_contacts: 'Контакты',
 
     hero_eyebrow: 'Частный трансферный сервис',
+    hero_langs: 'Мы говорим',
     hero_title: 'Премиальные частные трансферы по Италии',
     hero_slogan: 'Комфорт. Пунктуальность. Стиль.',
     hero_badge: 'Лучшая цена в Европе',
