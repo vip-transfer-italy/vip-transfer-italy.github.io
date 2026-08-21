@@ -427,6 +427,20 @@ ul { list-style: none; }
   margin-bottom: 44px;
 }
 
+@media (max-width: 600px) {
+  .hero__eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+  }
+  .hero__eyebrow::before,
+  .hero__eyebrow::after {
+    display: none;
+  }
+  .hero__slogan {
+    letter-spacing: 0.12em;
+  }
+}
+
 .hero__badge {
   display: inline-flex;
   align-items: center;
@@ -1054,6 +1068,8 @@ ul { list-style: none; }
   .cta-bar { display: flex; }
   /* піднімаємо месенджери, щоб не накривали кнопку */
   .fab { bottom: 84px; }
+  .section { padding: 56px 0; }
+  .booking__note { margin-bottom: 30px; }
 }
 
 /* ============ REVIEWS ============ */
