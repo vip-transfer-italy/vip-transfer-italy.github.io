@@ -103,8 +103,6 @@ const I18N = {
     f_phone: 'Contact phone',
     f_phone_ph: '+39 ...',
     f_submit: 'Book Now',
-    f_or: 'or',
-    f_whatsapp: 'Book via WhatsApp',
     f_wa_msg: 'Hello! I would like to book a transfer.',
     f_success: 'Thank you for your order! Our manager will contact you on WhatsApp shortly.',
     f_error: 'Please fill in all required fields correctly.',
@@ -212,8 +210,6 @@ const I18N = {
     f_phone: 'Telefono di contatto',
     f_phone_ph: '+39 ...',
     f_submit: 'Prenota',
-    f_or: 'oppure',
-    f_whatsapp: 'Prenota su WhatsApp',
     f_wa_msg: 'Salve! Vorrei prenotare un transfer.',
     f_success: 'Grazie per la richiesta! Un nostro manager ti contatterà su WhatsApp a breve.',
     f_error: 'Compila correttamente tutti i campi obbligatori.',
@@ -321,8 +317,6 @@ const I18N = {
     f_phone: 'Teléfono de contacto',
     f_phone_ph: '+39 ...',
     f_submit: 'Reservar',
-    f_or: 'o',
-    f_whatsapp: 'Reservar por WhatsApp',
     f_wa_msg: '¡Hola! Quiero reservar un traslado.',
     f_success: '¡Gracias por tu solicitud! Un gestor te contactará por WhatsApp en breve.',
     f_error: 'Por favor, rellena correctamente todos los campos obligatorios.',
@@ -430,8 +424,6 @@ const I18N = {
     f_phone: 'Контактный телефон',
     f_phone_ph: '+39 ...',
     f_submit: 'Узнать цену',
-    f_or: 'или',
-    f_whatsapp: 'Узнать цену в WhatsApp',
     f_wa_msg: 'Здравствуйте! Хочу забронировать трансфер.',
     f_success: 'Спасибо за заказ! С вами свяжется менеджер в WhatsApp.',
     f_error: 'Пожалуйста, заполните все обязательные поля корректно.',
@@ -928,7 +920,7 @@ async function sendToFormSubmit(d) {
   if (!res.ok) throw new Error('FormSubmit error ' + res.status);
 }
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   if (!validateForm()) {
@@ -938,25 +930,30 @@ form.addEventListener('submit', async (e) => {
   formError.hidden = true;
 
   const data = collectData();
+  const t = I18N[currentLang];
+  const waText = [
+    t.f_wa_msg,
+    '📍 ' + t.f_pickup + ': ' + data.pickup,
+    '🏁 ' + t.f_dest + ': ' + data.destination,
+    '📅 ' + data.date + ' 🕒 ' + data.time,
+    '👥 ' + t.f_pax + ': ' + data.passengers,
+    '📞 ' + t.f_phone + ': ' + data.phone
+  ].join('\n');
 
-  // одразу показуємо успіх (без перезавантаження сторінки),
-  // відправка власнику йде у фоні
-  submitBtn.disabled = true;
+  // відкриваємо WhatsApp одразу, синхронно в обробнику кліка —
+  // інакше браузер заблокує вікно як спливаюче
+  window.open('https://wa.me/393513975476?text=' + encodeURIComponent(waText), '_blank');
 
-  try {
-    if (USE_FORMSUBMIT) {
-      await sendToFormSubmit(data);
-    } else if (TELEGRAM_BOT_TOKEN.indexOf('ЗАМІНИ') === -1) {
-      await sendToTelegram(data);
-    } else {
-      // токен ще не налаштований — лише лог для розробника
-      console.warn('[VIP Transfer] Заявка не відправлена власнику: ' +
-        'вкажи TELEGRAM_BOT_TOKEN і TELEGRAM_CHAT_IDS вгорі script.js', data);
-    }
-  } catch (err) {
-    // не блокуємо користувача, якщо сповіщення не пішло —
-    // він у будь-якому разі бачить підтвердження і лишив телефон
-    console.error('[VIP Transfer] Не вдалося відправити сповіщення:', err);
+  // тихий бекап власнику в Telegram — не блокує й не впливає на UX клієнта
+  if (USE_FORMSUBMIT) {
+    sendToFormSubmit(data).catch(err =>
+      console.error('[VIP Transfer] Не вдалося відправити сповіщення:', err));
+  } else if (TELEGRAM_BOT_TOKEN.indexOf('ЗАМІНИ') === -1) {
+    sendToTelegram(data).catch(err =>
+      console.error('[VIP Transfer] Не вдалося відправити сповіщення:', err));
+  } else {
+    console.warn('[VIP Transfer] Заявка не відправлена власнику: ' +
+      'вкажи TELEGRAM_BOT_TOKEN і TELEGRAM_CHAT_IDS вгорі script.js', data);
   }
 
   // головна подія для статистики — заявка з форми
@@ -964,6 +961,11 @@ form.addEventListener('submit', async (e) => {
     method: 'booking_form',
     language: currentLang,
     passengers: data.passengers
+  });
+  track('contact_click', {
+    channel: 'whatsapp',
+    placement: 'booking_form',
+    language: currentLang
   });
 
   form.querySelector('.form__grid').style.display = 'none';
@@ -1093,28 +1095,13 @@ document.querySelectorAll('.route').forEach(btn => {
 })();
 
 /* ============================================================
-   КНОПКА "ЗАБРОНЮВАТИ В WHATSAPP"
-   Підставляє в повідомлення все, що клієнт уже заповнив у формі
-   ============================================================ */
-document.getElementById('waBookBtn').addEventListener('click', function () {
-  const d = collectData();
-  const t = I18N[currentLang];
-  const lines = [t.f_wa_msg];
-  if (d.pickup)      lines.push('📍 ' + t.f_pickup + ': ' + d.pickup);
-  if (d.destination) lines.push('🏁 ' + t.f_dest + ': ' + d.destination);
-  if (d.date)        lines.push('📅 ' + d.date + (d.time ? ' 🕒 ' + d.time : ''));
-  if (d.passengers)  lines.push('👥 ' + t.f_pax + ': ' + d.passengers);
-  this.href = 'https://wa.me/393513975476?text=' + encodeURIComponent(lines.join('\n'));
-});
-
-/* ============================================================
    ВІДСТЕЖЕННЯ КОНТАКТІВ (WhatsApp / Telegram / телефон)
    ============================================================ */
 document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
   a.addEventListener('click', () => {
     track('contact_click', {
       channel: 'whatsapp',
-      placement: a.id === 'waBookBtn' ? 'booking_form' : 'floating_button',
+      placement: 'floating_button',
       language: currentLang
     });
   });
