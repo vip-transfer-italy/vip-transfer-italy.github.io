@@ -63,6 +63,16 @@ const I18N = {
     hero_cta: 'Book Now',
     hero_cta2: 'Our Fleet',
 
+    calc_eyebrow: 'Price',
+    calc_title: 'Calculate your price instantly',
+    calc_note: 'Enter your route — we\'ll show an estimated price right away.',
+    calc_btn: 'Calculate price',
+    calc_error: 'Please pick both addresses from the suggestion list.',
+    calc_price_label: 'Estimated price',
+    calc_disclaimer: 'Estimated price. The exact price is confirmed by the manager before the ride.',
+    calc_book: 'Book this route',
+    calc_fail: 'Could not calculate the distance. Please try again or fill in the form below.',
+
     about_eyebrow: 'About Us',
     about_title: 'Travel Italy the First-Class Way',
     about_text: 'VIP Transfer Italy provides premium private transfers across the whole country — airports, hotels, lakes, ski resorts and city-to-city rides. One car, one driver, one fixed price. No queues, no stress, no surprises.',
@@ -169,6 +179,16 @@ const I18N = {
     hero_badge: 'Miglior Prezzo in Europa',
     hero_cta: 'Prenota Ora',
     hero_cta2: 'La Nostra Flotta',
+
+    calc_eyebrow: 'Prezzo',
+    calc_title: 'Calcola subito il tuo prezzo',
+    calc_note: 'Inserisci il tuo percorso — ti mostriamo subito un prezzo stimato.',
+    calc_btn: 'Calcola il prezzo',
+    calc_error: 'Seleziona entrambi gli indirizzi dall\'elenco dei suggerimenti.',
+    calc_price_label: 'Prezzo stimato',
+    calc_disclaimer: 'Prezzo stimato. Il prezzo esatto viene confermato dal manager prima del viaggio.',
+    calc_book: 'Prenota questo percorso',
+    calc_fail: 'Impossibile calcolare la distanza. Riprova o compila il modulo qui sotto.',
 
     about_eyebrow: 'Chi Siamo',
     about_title: 'Viaggia in Italia in Prima Classe',
@@ -277,6 +297,16 @@ const I18N = {
     hero_cta: 'Reservar',
     hero_cta2: 'Nuestra Flota',
 
+    calc_eyebrow: 'Precio',
+    calc_title: 'Calcula tu precio al instante',
+    calc_note: 'Introduce tu ruta — te mostramos un precio estimado al momento.',
+    calc_btn: 'Calcular precio',
+    calc_error: 'Selecciona ambas direcciones de la lista de sugerencias.',
+    calc_price_label: 'Precio estimado',
+    calc_disclaimer: 'Precio estimado. El precio exacto lo confirma el gestor antes del viaje.',
+    calc_book: 'Reservar esta ruta',
+    calc_fail: 'No se pudo calcular la distancia. Inténtalo de nuevo o rellena el formulario de abajo.',
+
     about_eyebrow: 'Nosotros',
     about_title: 'Viaja por Italia en Primera Clase',
     about_text: 'VIP Transfer Italy ofrece traslados privados premium por todo el país — aeropuertos, hoteles, lagos, estaciones de esquí y viajes entre ciudades. Un coche, un conductor, un precio fijo. Sin colas, sin estrés, sin sorpresas.',
@@ -383,6 +413,16 @@ const I18N = {
     hero_badge: 'Лучшая цена в Европе',
     hero_cta: 'Узнать цену',
     hero_cta2: 'Наш автопарк',
+
+    calc_eyebrow: 'Цена',
+    calc_title: 'Рассчитайте цену мгновенно',
+    calc_note: 'Укажите маршрут — мы сразу покажем ориентировочную цену.',
+    calc_btn: 'Рассчитать цену',
+    calc_error: 'Выберите оба адреса из списка подсказок.',
+    calc_price_label: 'Ориентировочная цена',
+    calc_disclaimer: 'Ориентировочная цена. Точную цену подтверждает менеджер перед поездкой.',
+    calc_book: 'Забронировать этот маршрут',
+    calc_fail: 'Не удалось рассчитать расстояние. Попробуйте ещё раз или заполните форму ниже.',
 
     about_eyebrow: 'О нас',
     about_title: 'Путешествуйте по Италии первым классом',
@@ -719,7 +759,9 @@ function setupAutocomplete(inputId, listId) {
     const res = await fetch(url, { signal, headers: { 'Accept': 'application/json' } });
     if (!res.ok) throw new Error('Nominatim HTTP ' + res.status);
     const data = await res.json();
-    return (Array.isArray(data) ? data : []).map(p => p.display_name).filter(Boolean);
+    return (Array.isArray(data) ? data : [])
+      .filter(p => p.display_name)
+      .map(p => ({ name: p.display_name, lat: p.lat, lon: p.lon }));
   }
 
   async function fetchPhoton(query, signal) {
@@ -732,8 +774,10 @@ function setupAutocomplete(inputId, listId) {
     const data = await res.json();
     return (data.features || []).map(f => {
       const p = f.properties || {};
-      return [p.name, p.street, p.housenumber, p.city, p.state, p.country]
+      const coords = (f.geometry && f.geometry.coordinates) || [];
+      const name = [p.name, p.street, p.housenumber, p.city, p.state, p.country]
         .filter(Boolean).join(', ');
+      return name ? { name, lat: coords[1], lon: coords[0] } : null;
     }).filter(Boolean);
   }
 
@@ -754,9 +798,9 @@ function setupAutocomplete(inputId, listId) {
       // об'єднуємо: спочатку Nominatim, потім унікальні з Photon
       const seen = new Set();
       const items = [];
-      [...nomi, ...photon].forEach(name => {
-        const key = name.toLowerCase().slice(0, 60);
-        if (!seen.has(key) && items.length < 5) { seen.add(key); items.push(name); }
+      [...nomi, ...photon].forEach(place => {
+        const key = place.name.toLowerCase().slice(0, 60);
+        if (!seen.has(key) && items.length < 5) { seen.add(key); items.push(place); }
       });
 
       list.innerHTML = '';
@@ -766,20 +810,26 @@ function setupAutocomplete(inputId, listId) {
         return;
       }
 
-      items.forEach(display_name => {
-        const place = { display_name };
+      items.forEach(place => {
         const li = document.createElement('li');
         li.setAttribute('role', 'option');
         const icon = document.createElement('span');
         icon.className = 'ac-icon';
         icon.textContent = '📍';
         li.appendChild(icon);
-        li.appendChild(document.createTextNode(place.display_name));
+        li.appendChild(document.createTextNode(place.name));
         // pointerdown спрацьовує і для миші, і для тапів на телефоні,
         // ДО blur інпута (mousedown на iOS іноді губиться)
         const pick = (e) => {
           e.preventDefault();
-          input.value = place.display_name;
+          input.value = place.name;
+          if (place.lat && place.lon) {
+            input.dataset.lat = place.lat;
+            input.dataset.lon = place.lon;
+          } else {
+            delete input.dataset.lat;
+            delete input.dataset.lon;
+          }
           closeList();
         };
         li.addEventListener('pointerdown', pick);
@@ -795,6 +845,9 @@ function setupAutocomplete(inputId, listId) {
   }, 400);
 
   input.addEventListener('input', () => {
+    // текст більше не відповідає раніше обраній точці — координати застаріли
+    delete input.dataset.lat;
+    delete input.dataset.lon;
     const q = input.value.trim();
     if (q.length < 3) {
       closeList();
@@ -816,6 +869,92 @@ function setupAutocomplete(inputId, listId) {
 
 setupAutocomplete('pickup', 'pickupList');
 setupAutocomplete('destination', 'destinationList');
+setupAutocomplete('calcPickup', 'calcPickupList');
+setupAutocomplete('calcDestination', 'calcDestinationList');
+
+/* ============================================================
+   КАЛЬКУЛЯТОР ЦІНИ
+   Формула підібрана під цінник конкурента (idtransfero.com,
+   жовтень 2026) по ~20 маршрутах з Мілана — лінійна регресія
+   дала базу ≈15€ + 1,4€/км, з мінімумом 35€ на коротку поїздку.
+   Фінальна ціна — на 1% нижче за цю оцінку.
+   Реальна відстань по дорогах береться з публічного OSRM-сервера
+   (без ключа, але без гарантій аптайму).
+   ============================================================ */
+const PRICE_BASE = 15;
+const PRICE_PER_KM = 1.4;
+const PRICE_MIN = 35;
+const PRICE_DISCOUNT = 0.99;
+
+function estimatePrice(km) {
+  return Math.round(Math.max(PRICE_MIN, PRICE_BASE + PRICE_PER_KM * km) * PRICE_DISCOUNT);
+}
+
+async function fetchDrivingDistanceKm(lat1, lon1, lat2, lon2) {
+  const url = 'https://router.project-osrm.org/route/v1/driving/'
+    + lon1 + ',' + lat1 + ';' + lon2 + ',' + lat2 + '?overview=false';
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('OSRM HTTP ' + res.status);
+  const data = await res.json();
+  if (!data.routes || !data.routes[0]) throw new Error('OSRM: no route found');
+  return data.routes[0].distance / 1000;
+}
+
+(function setupCalculator() {
+  const pickupEl = document.getElementById('calcPickup');
+  const destEl = document.getElementById('calcDestination');
+  const btn = document.getElementById('calcBtn');
+  const errorEl = document.getElementById('calcError');
+  const resultEl = document.getElementById('calcResult');
+  const priceEl = document.getElementById('calcPrice');
+  const bookBtn = document.getElementById('calcBookBtn');
+  if (!pickupEl || !destEl || !btn) return;
+
+  btn.addEventListener('click', async () => {
+    errorEl.hidden = true;
+    resultEl.hidden = true;
+
+    const lat1 = pickupEl.dataset.lat, lon1 = pickupEl.dataset.lon;
+    const lat2 = destEl.dataset.lat, lon2 = destEl.dataset.lon;
+    if (!lat1 || !lon1 || !lat2 || !lon2) {
+      errorEl.textContent = I18N[currentLang].calc_error;
+      errorEl.hidden = false;
+      return;
+    }
+
+    const originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '…';
+
+    try {
+      const km = await fetchDrivingDistanceKm(lat1, lon1, lat2, lon2);
+      const price = estimatePrice(km);
+      const t = I18N[currentLang];
+      priceEl.textContent = t.calc_price_label + ': ~' + price + ' €';
+      resultEl.hidden = false;
+      track('calculate_price', {
+        distance_km: Math.round(km),
+        price_eur: price,
+        language: currentLang
+      });
+    } catch (err) {
+      console.error('[VIP Transfer] Calculator error:', err);
+      errorEl.textContent = I18N[currentLang].calc_fail;
+      errorEl.hidden = false;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    }
+  });
+
+  bookBtn.addEventListener('click', () => {
+    document.getElementById('pickup').value = pickupEl.value;
+    document.getElementById('destination').value = destEl.value;
+    document.getElementById('pickup').classList.remove('is-invalid');
+    document.getElementById('destination').classList.remove('is-invalid');
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
 
 /* ============================================================
    ФОРМА БРОНЮВАННЯ: валідація + відправка

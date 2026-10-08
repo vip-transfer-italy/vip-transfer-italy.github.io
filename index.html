@@ -42,7 +42,7 @@
     gtag('config', 'AW-18393778159');
   </script>
 
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
   <!-- фавікон: ICO/PNG для Google-пошуку, SVG для сучасних браузерів -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96.png">
@@ -159,6 +159,55 @@
       </div>
     </div>
     <a href="#about" class="hero__scroll" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <!-- ===== PRICE CALCULATOR ===== -->
+  <section class="section calculator" id="calculator">
+    <div class="container">
+      <p class="section__eyebrow reveal" data-i18n="calc_eyebrow">Price</p>
+      <h2 class="section__title reveal" data-i18n="calc_title">Calculate your price instantly</h2>
+      <p class="calculator__note reveal" data-i18n="calc_note">
+        Enter your route — we'll show an estimated price right away.
+      </p>
+
+      <div class="calculator__box reveal">
+        <div class="calculator__fields">
+          <div class="form__field form__field--wide autocomplete">
+            <label for="calcPickup" data-i18n="f_pickup">Pickup location</label>
+            <input type="text" id="calcPickup" autocomplete="off" autocapitalize="off"
+                   autocorrect="off" spellcheck="false"
+                   data-i18n-placeholder="f_addr_ph" placeholder="Address, airport, hotel...">
+            <ul class="autocomplete__list" id="calcPickupList" role="listbox"></ul>
+          </div>
+
+          <div class="form__field form__field--wide autocomplete">
+            <label for="calcDestination" data-i18n="f_dest">Destination</label>
+            <input type="text" id="calcDestination" autocomplete="off" autocapitalize="off"
+                   autocorrect="off" spellcheck="false"
+                   data-i18n-placeholder="f_addr_ph" placeholder="Address, airport, hotel...">
+            <ul class="autocomplete__list" id="calcDestinationList" role="listbox"></ul>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn--gold calculator__btn" id="calcBtn" data-i18n="calc_btn">
+          Calculate price
+        </button>
+
+        <p class="calculator__error" id="calcError" hidden data-i18n="calc_error">
+          Please pick both addresses from the suggestion list.
+        </p>
+
+        <div class="calculator__result" id="calcResult" hidden>
+          <p class="calculator__price" id="calcPrice"></p>
+          <p class="calculator__disclaimer" data-i18n="calc_disclaimer">
+            Estimated price. The exact price is confirmed by the manager before the ride.
+          </p>
+          <button type="button" class="btn btn--ghost calculator__book" id="calcBookBtn" data-i18n="calc_book">
+            Book this route
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ===== BOOKING ===== -->
