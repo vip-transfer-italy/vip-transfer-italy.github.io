@@ -658,24 +658,13 @@ ul { list-style: none; }
   padding: 30px 28px 34px;
 }
 
-.car-card__badge {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 5px 14px;
-  margin-bottom: 16px;
-}
-
-.car-card__name {
+.car-card__class {
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--gold-light);
+  margin-bottom: 6px;
 }
 
 .car-card__alt {
@@ -684,7 +673,7 @@ ul { list-style: none; }
   font-size: 0.78rem;
   font-weight: 400;
   color: var(--text-muted);
-  margin-top: 4px;
+  margin-bottom: 16px;
 }
 
 .car-card__desc {
