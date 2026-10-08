@@ -582,9 +582,27 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr;
   gap: 34px;
-  margin-top: 50px;
+  margin-top: 36px;
 }
 @media (min-width: 820px) { .fleet__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1100px) { .fleet__grid:not(.fleet__grid--vans) { grid-template-columns: repeat(3, 1fr); } }
+
+.fleet__grid--vans {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fleet__group-title {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin: 64px 0 0;
+}
+.fleet__group-title--first { margin-top: 44px; }
 
 .car-card {
   background: var(--bg-card);

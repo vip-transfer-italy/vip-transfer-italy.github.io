@@ -87,6 +87,8 @@ const I18N = {
 
     fleet_eyebrow: 'Our Fleet',
     fleet_title: 'Choose Your Class',
+    fleet_group_sedans: 'Sedans',
+    fleet_group_vans: 'Minivans',
     car1_badge: 'Economy',
     car1_desc: 'A reliable, comfortable sedan for solo travellers on a budget-friendly transfer. Clean, punctual and private — the smart way to get around.',
     car2_badge: 'Comfort',
@@ -206,6 +208,8 @@ const I18N = {
 
     fleet_eyebrow: 'La Nostra Flotta',
     fleet_title: 'Scegli la Tua Classe',
+    fleet_group_sedans: 'Berline',
+    fleet_group_vans: 'Minivan',
     car1_badge: 'Economica',
     car1_desc: 'Una berlina affidabile e confortevole per chi viaggia da solo, con un transfer conveniente. Pulita, puntuale e privata — il modo intelligente di spostarsi.',
     car2_badge: 'Comfort',
@@ -325,6 +329,8 @@ const I18N = {
 
     fleet_eyebrow: 'Nuestra Flota',
     fleet_title: 'Elige Tu Clase',
+    fleet_group_sedans: 'Berlinas',
+    fleet_group_vans: 'Minivans',
     car1_badge: 'Económica',
     car1_desc: 'Una berlina fiable y cómoda para viajeros solos, con un traslado económico. Limpia, puntual y privada — la forma inteligente de moverte.',
     car2_badge: 'Confort',
@@ -444,6 +450,8 @@ const I18N = {
 
     fleet_eyebrow: 'Автопарк',
     fleet_title: 'Выберите свой класс',
+    fleet_group_sedans: 'Седаны',
+    fleet_group_vans: 'Минивэны',
     car1_badge: 'Эконом',
     car1_desc: 'Надёжный и комфортный седан для одиночных поездок по доступной цене. Чисто, пунктуально и приватно — разумный способ передвигаться.',
     car2_badge: 'Комфорт',
