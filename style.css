@@ -713,8 +713,6 @@ ul { list-style: none; }
   font-weight: 600;
 }
 
-.car-card__media--cutout img { object-fit: contain; padding: 30px; }
-
 /* ============ BOOKING ============ */
 .booking { background: var(--bg); }
 
