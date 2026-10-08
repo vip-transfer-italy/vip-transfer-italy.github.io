@@ -654,6 +654,15 @@ ul { list-style: none; }
   margin-bottom: 12px;
 }
 
+.car-card__alt {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
 .car-card__desc {
   font-size: 0.93rem;
   color: var(--text-muted);
