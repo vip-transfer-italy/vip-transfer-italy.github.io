@@ -1188,14 +1188,20 @@ document.querySelectorAll('.route').forEach(btn => {
 (function () {
   const bar = document.getElementById('ctaBar');
   const hero = document.getElementById('hero');
+  const calculator = document.getElementById('calculator');
   const booking = document.getElementById('booking');
   if (!bar || !hero || !booking) return;
 
+  function isVisible(el) {
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return r.top < window.innerHeight && r.bottom > 120;
+  }
+
   function update() {
     const pastHero = window.scrollY > hero.offsetHeight * 0.6;
-    const b = booking.getBoundingClientRect();
-    const bookingVisible = b.top < window.innerHeight && b.bottom > 120;
-    bar.classList.toggle('is-shown', pastHero && !bookingVisible);
+    const hidden = isVisible(calculator) || isVisible(booking);
+    bar.classList.toggle('is-shown', pastHero && !hidden);
   }
 
   window.addEventListener('scroll', update, { passive: true });
