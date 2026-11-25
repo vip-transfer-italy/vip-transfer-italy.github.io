@@ -125,3 +125,22 @@ const TELEGRAM_CHAT_IDS = [
   адресу можна ввести вручну, форма не блокується.
 - **Контакти:** телефон `+39 351 397 5476`, WhatsApp `wa.me/393513975476`,
   Telegram `t.me/Transferitali` — плаваючі кнопки справа внизу.
+
+---
+
+## 5. SEO-движок: 650+ страниц маршрутов (пассивный поток клиентов)
+
+`seo/generate.py` автоматически создаёт отдельную страницу под каждый маршрут
+«аэропорт → город/курорт» (Malpensa → Como, Fiumicino → Positano, Venice → Cortina …)
+с ценами по всем классам авто, FAQ, разметкой Schema.org (цены, FAQ, хлебные крошки)
+и кнопками WhatsApp/Telegram с уже заполненным текстом заявки.
+Такие страницы ловят из Google запросы вида *"malpensa to como transfer price"* —
+клиенты приходят сами, 24/7, без рекламы.
+
+- Добавить аэропорт/город → допиши его в `seo/places.json` (название + координаты), запушь в `main` — GitHub Action сам пересоберёт страницы.
+- Каждый понедельник Action обновляет `sitemap.xml` и отправляет все URL в Bing/Yandex через IndexNow (ключ — файл `*.txt` в корне, не удалять).
+- Цены считаются той же формулой, что и калькулятор на сайте (`PRICE_*` + множители классов `CLASSES` в `generate.py`).
+- Клики по WhatsApp/Telegram на этих страницах пишутся в GA4 как `generate_lead` / `contact_click`.
+
+Единственное, что нужно сделать один раз: в Google Search Console → Sitemaps
+отправить `https://viptransferitaliy.com/sitemap.xml`.
