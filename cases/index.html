@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DropZone — кейсы и апгрейды</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#/" data-nav>DROP<span>ZONE</span></a>
+  <nav class="menu">
+    <a href="#/" data-nav>Кейсы</a>
+    <a href="#/upgrade" data-nav>Апгрейд</a>
+    <a href="#/contract" data-nav>Контракты</a>
+    <a href="#/inventory" data-nav>Инвентарь <b id="invCount">0</b></a>
+  </nav>
+  <div class="wallet">
+    <button class="bonus" id="bonusBtn" title="Бесплатные монеты">+ Бонус</button>
+    <div class="balance"><span class="coin"></span><b id="balance">0</b></div>
+  </div>
+</header>
+
+<div class="live">
+  <div class="live-label"><i></i>LIVE</div>
+  <div class="live-track" id="liveTrack"></div>
+</div>
+
+<main id="app"></main>
+
+<footer class="foot">
+  <p>DropZone — демонстрационный симулятор. Только виртуальные монеты: их нельзя купить или вывести, а предметы не настоящие.</p>
+  <div class="stats" id="stats"></div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" id="modalBox"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
