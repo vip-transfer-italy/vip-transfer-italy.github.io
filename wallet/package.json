@@ -1,0 +1,27 @@
+{
+  "name": "wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/core.test.mjs",
+    "build": "esbuild src/app.js --bundle --minify --format=esm --outfile=wallet.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@noble/curves": "1.6.0",
+    "@noble/hashes": "1.5.0",
+    "@scure/base": "1.1.9",
+    "@scure/bip32": "1.5.0",
+    "@scure/bip39": "1.4.0",
+    "@scure/btc-signer": "1.4.0",
+    "qrcode-generator": "1.4.4"
+  },
+  "devDependencies": {
+    "esbuild": "0.24.0",
+    "ethers": "6.13.4"
+  },
+  "type": "module"
+}
